@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/aliviaprht/electron-RecapApp#readme",
   "dependencies": {
+    "bootstrap": "^4.0.0-alpha.6",
     "electron": "^1.7.9"
   }
 }

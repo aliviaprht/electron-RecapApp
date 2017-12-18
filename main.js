@@ -13,7 +13,7 @@ app.on('ready', function(){
 	
 	//Load html window
 	mainWindow.loadURL(url.format({
-		pathname : path.join(__dirname,'mainWindow.html'),
+		pathname : path.join(__dirname,'mainPage.html'),
 		protocol : 'file:',
 		slashes: true
 	}));

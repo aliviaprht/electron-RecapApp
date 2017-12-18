@@ -1,0 +1,57 @@
+.row {
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+
+}
+
+.container {
+    margin: 5px auto;
+}
+.col {
+    border: 1px solid black;
+    text-align: center;
+    height: 500px;
+    width: 100px;
+}
+
+.table-title {
+    background-color: aquamarine;
+    text-align: center;
+    margin: 5px 0px 5px 0px;
+    height: 50px;
+}
+
+.box-pink {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 14px;
+    height: auto;
+    width: 100px;
+    padding: 2px;
+    background-color: pink;
+    border-radius: 5%;
+}
+
+.box-orange {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 14px;
+    height: auto;
+    width: 100px;
+    padding: 2px;
+    background-color: coral;
+    border-radius: 5%;
+}
+
+.box-green {
+    border: 1px solid black;
+    text-align: center;
+    font-size: 14px;
+    height: auto;
+    width: 100px;
+    padding: 2px;
+    background-color: limegreen;
+    border-radius: 5%;
+}

@@ -1,0 +1,22 @@
+{
+  "name": "electron-recapapp",
+  "version": "1.0.0",
+  "description": "Recap Application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aliviaprht/electron-RecapApp.git"
+  },
+  "author": "Harum and Alivia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aliviaprht/electron-RecapApp/issues"
+  },
+  "homepage": "https://github.com/aliviaprht/electron-RecapApp#readme",
+  "dependencies": {
+    "electron": "^1.7.9"
+  }
+}

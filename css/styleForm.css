@@ -13,3 +13,7 @@
 .col {
     text-align: center;
 }
+
+.checkbox-inline {
+    margin-right: 5px;
+}

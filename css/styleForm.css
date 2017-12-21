@@ -20,4 +20,13 @@
 
 .inputUkuran {
     margin-right: 10px;
+    width: 100px;
+}
+
+.inputUkuranTable {
+    width: 40px;
+}
+
+#inputKeterangan {
+    overflow: scroll;
 }

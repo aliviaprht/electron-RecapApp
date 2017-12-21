@@ -177,83 +177,109 @@
         </fieldset>
         <div class="form-group">
             <label for="inputKeterangan">Keterangan</label>
-            <input type="text" class="form-control" id="inputKeterangan">
+            <textarea class="form-control" id="inputKeterangan" rows="2"></textarea>
         </div>
+
         <fieldset class="form-group">
             <div class="row">
-                <legend class="col-form-legend">Detail Ukuran</legend>
+                <legend class="col-form-legend">Detail Pengiriman dan Ukuran</legend>
+                <br>
+                <h6>Pengiriman 1</h6>
 
             </div>
             <div class="row">
                 <div class="col">
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="1"> Uk. 2
+                        <input type="checkbox" value="1" id="check2"> Uk. 2
                     </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputUk.2" placeholder="Jml Uk.2" required>
+                    <input type="text" class="form-control-sm inputUkuran" id="input2" placeholder="Jml Uk.2" required>
                 </div>
                 <div class="col">
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="2"> Uk. 4
+                        <input type="checkbox" value="2" id="check4"> Uk. 4
                     </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputUk.4" placeholder="Jml Uk.4" required>
+                    <input type="text" class="form-control-sm inputUkuran" id="input4" placeholder="Jml Uk.4" required>
                 </div>
                 <div class="col">
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="3"> Uk. 6
+                        <input type="checkbox" value="3" id="check6"> Uk. 6
                     </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputUk.6" placeholder="Jml Uk.6" required>
+                    <input type="text" class="form-control-sm inputUkuran" id="input6" placeholder="Jml Uk.6" required>
                 </div>
                 <div class="col">
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="4"> Uk. 8
+                        <input type="checkbox" value="4" id="check8"> Uk. 8
                     </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputUk.8" placeholder="Jml Uk.8" required>
+                    <input type="text" class="form-control-sm inputUkuran" id="input8" placeholder="Jml Uk.8" required>
                 </div>
             </div>
             <div class="row">
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="5"> Uk. 10
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.10" placeholder="Jml Uk.10" required>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="6"> Uk. 12
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.12" placeholder="Jml Uk.12" required>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="7"> Uk. XS
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.XS" placeholder="Jml Uk.XS" required>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="8"> Uk. S
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.S" placeholder="Jml Uk.S" required>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="5" id="check10"> Uk. 10
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input10" placeholder="Jml Uk.10" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="6" id="check12"> Uk. 12
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input12" placeholder="Jml Uk.12" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="7" id="checkXS"> Uk. XS
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputXS" placeholder="Jml Uk.XS" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="8" id="checkS"> Uk. S
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputS" placeholder="Jml Uk.S" required>
+                </div>
             </div>
             <div class="row">
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="9"> Uk. M
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.M" placeholder="Jml Uk.M" required>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="10"> Uk. L
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.L" placeholder="Jml Uk.L" required>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="11"> Uk. XL
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.XL" placeholder="Jml Uk.XL" required>
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="12"> Uk. 3L
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.3L" placeholder="Jml Uk.3L" required>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="9" id="checkM"> Uk. M
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputM" placeholder="Jml Uk.M" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="10" id="checkL"> Uk. L
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputL" placeholder="Jml Uk.L" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="11" id="checkXL"> Uk. XL
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputXL" placeholder="Jml Uk.XL" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="12" id="check3L"> Uk. 3L
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input3L" placeholder="Jml Uk.3L" required>
+                </div>
             </div>
             <div class="row">
-                <label class="checkbox-inline">
-                    <input type="checkbox" value="13"> Uk. 4L
-                </label>
-                <input type="text" class="form-control-sm col-2 inputUkuran" id="inputUk.4L" placeholder="Jml Uk.4L" required>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="13" id="check4L"> Uk. 4L
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input4L" placeholder="Jml Uk.4L" required>
+                </div>
             </div>
         </fieldset>
 
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary my-2 my-sm-0">+ Pengiriman</button>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col">
@@ -279,6 +305,164 @@
                 }, false);
             }, false);
         })();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('form input[id="input2"]').prop("disabled", true);
+            $("#check2").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input2"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input2"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input4"]').prop("disabled", true);
+            $("#check4").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input4"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input4"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input6"]').prop("disabled", true);
+            $("#check6").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input6"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input6"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input8"]').prop("disabled", true);
+            $("#check8").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input8"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input8"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input10"]').prop("disabled", true);
+            $("#check10").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input10"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input10"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input12"]').prop("disabled", true);
+            $("#check12").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input12"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input12"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputXS"]').prop("disabled", true);
+            $("#checkXS").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputXS"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputXS"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputS"]').prop("disabled", true);
+            $("#checkS").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputS"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputS"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputM"]').prop("disabled", true);
+            $("#checkM").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputM"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputM"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputL"]').prop("disabled", true);
+            $("#checkL").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputL"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputL"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputXL"]').prop("disabled", true);
+            $("#checkXL").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputXL"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputXL"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input3L"]').prop("disabled", true);
+            $("#check3L").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input3L"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input3L"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input4L"]').prop("disabled", true);
+            $("#check4L").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input4L"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input4L"]').prop("disabled", true);
+                }
+            });
+        });
+
     </script>
 
 

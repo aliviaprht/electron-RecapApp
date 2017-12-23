@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form New Order</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/styleForm.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 class="header">Form New Order</h1>
+
+    <form class="container" id="needs-validation" novalidate>
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="inputKodeArt">Kode Artikel</label>
+                <input type="text" class="form-control" id="inputKodeArt" required>
+                <div class="invalid-feedback">
+                    Please insert "Kode Artikel"
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <label for="inputNoLKO">No. LKO</label>
+                <input type="text" class="form-control" id="inputNoLKO" required>
+                <div class="invalid-feedback">
+                    Please insert "No.LKO"
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="inputNamaArt">Nama Artikel</label>
+                <input type="text" class="form-control" id="inputNamaArt" required>
+                <div class="invalid-feedback">
+                    Please insert "Nama Artikel"
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <label for="inputJenisProduct">Jenis Product</label>
+                <input type="text" class="form-control" id="inputJenisProduct" required>
+                <div class="invalid-feedback">
+                    Please insert "Jenis Product"
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-6">
+                <label for="inputNamaKonsumen">Nama Konsumen</label>
+                <input type="text" class="form-control" id="inputNamaKonsumen" required>
+                <div class="invalid-feedback">
+                    Please insert "Nama Konsumen"
+                </div>
+            </div>
+            <div class="form-group col-6">
+                <label for="inputJenisBahan">Jenis Bahan</label>
+                <select type="text" class="form-control" id="inputJenisBahan" required>
+                    <option selected>Choose...</option>
+                    <option value="1">Cotton 20S</option>
+                    <option value="2">Cotton 24S</option>
+                    <option value="3">Cotton 30S</option>
+                    <option value="4">TC</option>
+                    <option value="5">CVC</option>
+                    <option value="6">Lacoste</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please insert "Jenis Bahan"
+                </div>
+            </div>
+        </div>
+
+        <div class="form-row align-items-center">
+            <div class="form-group col-6">
+                <label for="inputWarnaBahan">Warna Bahan</label>
+                <select class="form-control" id="inputWarnaBahan">
+                    <option selected>Choose...</option>
+                    <option value="1">Abu MD1</option>
+                    <option value="2">Abu MD2</option>
+                    <option value="3">Abu SDG</option>
+                    <option value="4">Abu Tua</option>
+                    <option value="5">Anggur</option>
+                    <option value="6">Army</option>
+                    <option value="7">Beby</option>
+                    <option value="8">Benhur T</option>
+                    <option value="9">Burgundi</option>
+                    <option value="10">B. Langit</option>
+                    <option value="11">B. SMA</option>
+                    <option value="12">C. Bata</option>
+                    <option value="13">C. Kakt</option>
+                    <option value="14">C. Kopi</option>
+                    <option value="15">C. Pramuka</option>
+                    <option value="16">C. Telur</option>
+                    <option value="17">Hitam</option>
+                    <option value="18">H. Botol</option>
+                    <option value="19">H. Denim</option>
+                    <option value="20">KNari</option>
+                    <option value="21">K. Busuk</option>
+                    <option value="22">K. Mas</option>
+                    <option value="23">Lumut</option>
+                    <option value="24">Magenta</option>
+                    <option value="25">Marun</option>
+                    <option value="26">Mentari</option>
+                    <option value="27">Merah</option>
+                    <option value="28">M. Denim</option>
+                    <option value="29">M. Neut</option>
+                    <option value="30">M. 71</option>
+                    <option value="31">M. 81</option>
+                    <option value="32">M. 85</option>
+                    <option value="33">Neut</option>
+                    <option value="34">Oren Bata</option>
+                    <option value="35">Oren Cerah</option>
+                    <option value="36">Pandan</option>
+                    <option value="37">Pink</option>
+                    <option value="38">Puji</option>
+                    <option value="39">Putih</option>
+                    <option value="40">Putih BW</option>
+                    <option value="41">Salm</option>
+                    <option value="42">Stabilo</option>
+                    <option value="43">Stabilo MD</option>
+                    <option value="44">TNI</option>
+                    <option value="45">Tosca</option>
+                    <option value="46">Tosca MD</option>
+                    <option value="47">Trong</option>
+                    <option value="48">Turqis</option>
+                    <option value="49">Turqis MD</option>
+                    <option value="50">Turqis T.</option>
+                    <option value="51">Ungu Muda</option>
+                    <option value="52">Ungu Tua</option>
+                    <option value="53">Ungu Tua SPC</option>
+                </select>
+            </div>
+            <div class="form-group col-6">
+                <label for="inputJenisSablon">Jenis Sablon</label>
+                <select class="form-control" id="inputJenisSablon">
+                    <option selected>Choose...</option>
+                    <option value="1">Karet</option>
+                    <option value="2">Pigment</option>
+                    <option value="3">Plastisol</option>
+                    <option value="4">Discharge/SW</option>
+                </select>
+            </div>
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-legend col-2">Letak Sablon</legend>
+                <div class="col-10">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="1">DKi
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="2">DT
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="3">BLK
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="4">BBL Luar
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="5">BBL Luar + Dalam
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="6">Tangan Kiri
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="7">Tangan Kanan
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="8">1/2 TS
+                    </label>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group">
+            <label for="inputKeterangan">Keterangan</label>
+            <textarea class="form-control" id="inputKeterangan" rows="2"></textarea>
+        </div>
+
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-legend">Detail Pengiriman dan Ukuran</legend>
+                <br>
+                <h6>Pengiriman 1</h6>
+
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="1" id="check2"> Uk. 2
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input2" placeholder="Jml Uk.2" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="2" id="check4"> Uk. 4
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input4" placeholder="Jml Uk.4" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="3" id="check6"> Uk. 6
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input6" placeholder="Jml Uk.6" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="4" id="check8"> Uk. 8
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input8" placeholder="Jml Uk.8" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="5" id="check10"> Uk. 10
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input10" placeholder="Jml Uk.10" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="6" id="check12"> Uk. 12
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input12" placeholder="Jml Uk.12" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="7" id="checkXS"> Uk. XS
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputXS" placeholder="Jml Uk.XS" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="8" id="checkS"> Uk. S
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputS" placeholder="Jml Uk.S" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="9" id="checkM"> Uk. M
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputM" placeholder="Jml Uk.M" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="10" id="checkL"> Uk. L
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputL" placeholder="Jml Uk.L" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="11" id="checkXL"> Uk. XL
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="inputXL" placeholder="Jml Uk.XL" required>
+                </div>
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="12" id="check3L"> Uk. 3L
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input3L" placeholder="Jml Uk.3L" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label class="checkbox-inline">
+                        <input type="checkbox" value="13" id="check4L"> Uk. 4L
+                    </label>
+                    <input type="text" class="form-control-sm inputUkuran" id="input4L" placeholder="Jml Uk.4L" required>
+                </div>
+            </div>
+        </fieldset>
+
+        <div class="row">
+            <div class="col">
+                <button class="btn btn-primary my-2 my-sm-0">+ Pengiriman</button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <a class="btn btn-danger my-2 my-sm-0" href="mainPage.html">Cancel</a>
+                <button class="btn btn-primary my-2 my-sm-0" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        // Example starter JavaScript for disabling form submissions if there are invalid fields
+        (function() {
+            'use strict';
+
+            window.addEventListener('load', function() {
+                var form = document.getElementById('needs-validation');
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            }, false);
+        })();
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('form input[id="input2"]').prop("disabled", true);
+            $("#check2").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input2"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input2"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input4"]').prop("disabled", true);
+            $("#check4").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input4"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input4"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input6"]').prop("disabled", true);
+            $("#check6").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input6"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input6"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input8"]').prop("disabled", true);
+            $("#check8").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input8"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input8"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input10"]').prop("disabled", true);
+            $("#check10").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input10"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input10"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input12"]').prop("disabled", true);
+            $("#check12").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input12"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input12"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputXS"]').prop("disabled", true);
+            $("#checkXS").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputXS"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputXS"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputS"]').prop("disabled", true);
+            $("#checkS").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputS"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputS"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputM"]').prop("disabled", true);
+            $("#checkM").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputM"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputM"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputL"]').prop("disabled", true);
+            $("#checkL").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputL"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputL"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="inputXL"]').prop("disabled", true);
+            $("#checkXL").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="inputXL"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="inputXL"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input3L"]').prop("disabled", true);
+            $("#check3L").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input3L"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input3L"]').prop("disabled", true);
+                }
+            });
+        });
+
+        $(document).ready(function(){
+            $('form input[id="input4L"]').prop("disabled", true);
+            $("#check4L").click(function(){
+                if($(this).prop("checked") == true){
+                    $('form input[id="input4L"]').prop("disabled", false);
+                }
+                else if($(this).prop("checked") == false){
+                    $('form input[id="input4L"]').prop("disabled", true);
+                }
+            });
+        });
+
+    </script>
+
+
+
+</body>
+</html>

@@ -28,20 +28,20 @@ module.exports.showOrder = function (rowsObject) {
   }
   $('#order-list button.detail').each(function (idx, obj) {
     $(obj).on('click', function () {
-      window.view.showModul1(this.id)
+      window.view.showModal1(this.id)
     })
   })
   $('#order-list button.next').each(function (idx, obj) {
     $(obj).on('click', function () {
-      window.view.showModul2(this.id)
+      window.view.showModal2(this.id)
     })
   })
 }
 
-module.exports.showModul1 = function (e) {
+module.exports.showModal1 = function (e) {
  
 }
 
-module.exports.showModul2 = function (e) {
+module.exports.showModal2 = function (e) {
   
 }

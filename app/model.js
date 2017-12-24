@@ -3,7 +3,7 @@
 const path = require('path')
 const fs = require('fs')
 const SQL = require('sql.js')
-//const view = require(path.join(__dirname, 'view.js'))
+const view = require(path.join(__dirname, 'view.js'))
 
 /*
   SQL.js returns a compact object listing the columns separately from the

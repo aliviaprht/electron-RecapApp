@@ -91,6 +91,7 @@ module.exports.initDb = function (appPath, callback) {
   if (db === null) {
     /* The file doesn't exist so create a new database. */
     createDb(dbPath)
+    console.log('create new DB cause null')
   } else {
     /*
       The file is a valid sqlite3 database. This simple query will demonstrate

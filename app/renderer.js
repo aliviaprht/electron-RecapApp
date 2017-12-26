@@ -23,17 +23,16 @@ let navbar = fs.readFileSync(path.join(htmlPath, 'navbar.html'), 'utf8')
 let order = fs.readFileSync(path.join(htmlPath, 'order.html'), 'utf8')
 let modal = fs.readFileSync(path.join(htmlPath, 'modal.html'), 'utf8')
 let O = cheerio.load(body)
-O('#navbar').append(header)
+O('#navbar').append(navbar)
 O('#order').append(order)
 O('#modal').append(modal)
 
 // Pass the DOM from Cheerio to jQuery.
 let dom = O.html()
 $('body').html(dom)
-
+console.log("document inserted")
 $('document').ready(function () {
   window.model.getOrder()
-  
 })
 
 window.ipc = window.ipc || {},

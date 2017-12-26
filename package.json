@@ -18,6 +18,7 @@
   "homepage": "https://github.com/aliviaprht/electron-RecapApp#readme",
   "dependencies": {
     "bootstrap": "^4.0.0-alpha.6",
+    "cheerio": "^1.0.0-rc.2",
     "electron": "^1.7.9",
     "sql.js": "^0.4.0"
   }

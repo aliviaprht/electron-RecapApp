@@ -1,9 +1,14 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 'use strict';
 
+window.$ = window.jQuery = require('jquery')
+window.Tether = require('tether')
+window.Bootstrap = require('bootstrap')
+
 window.addEventListener('load', function() {
     var form = document.getElementById('needs-validation');
     form.addEventListener('submit', function(event) {
+        console.log("check validity")
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();

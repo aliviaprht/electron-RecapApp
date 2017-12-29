@@ -1,21 +1,18 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
-'use strict';
+(function() {
+    'use strict';
 
-window.$ = window.jQuery = require('jquery')
-window.Tether = require('tether')
-window.Bootstrap = require('bootstrap')
-
-window.addEventListener('load', function() {
-    var form = document.getElementById('orderForm');
-    form.addEventListener('submit', function(event) {
-        console.log("check validity")
-        if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-        }
-        form.classList.add('was-validated');
+    window.addEventListener('load', function() {
+        var form = document.getElementById('orderForm');
+        form.addEventListener('submit', function(event) {
+            if (form.checkValidity() === false) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+        }, false);
     }, false);
-}, false);
+})();
 
 function checkAllInput() {
     var kodeart = document.orderForm.inputKodeArt;
@@ -28,7 +25,7 @@ function checkAllInput() {
     if(kodeart.value != "") {
         var regex = /^(\w{2}-\d{6}-\w+)$/;
         if (regex.test(kodeart.value) === false) {
-            alert ("Format Kode Artikel salah. Ikutin contoh format berikut ini'CM-111217-IBUSUSI001'")
+            alert ("Format Kode Artikel salah. Ikutin contoh format berikut ini 'CM-111217-IBUSUSI001'")
         }
     }
 
@@ -37,6 +34,30 @@ function checkAllInput() {
         var regex = /^(\w{2}-\d{5}-\w+)$/;
         if (regex.test(noLKO.value) === false) {
             alert ("Format No.LKO salah. Ikuti contoh format berikut ini 'KP-14874-XVII'")
+        }
+    }
+
+    //Check Nama Artikel
+    if (namaArtikel.value != "") {
+        var regex = /^[a-zA-Z0-9\s]+$/;
+        if (regex.test(namaArtikel.value) === false) {
+            alert ("Nama Artikel tidak valid")
+        }
+    }
+
+    //Check Nama Konsumen
+    if (namaKonsumen.value != "") {
+        var regex = /^[a-zA-Z0-9\s]+$/;
+        if (regex.test(namaKonsumen.value) === false) {
+            alert ("Nama Konsumen tidak valid")
+        }
+    }
+
+    //Check Jenis Product
+    if (jenisProduct.value != "") {
+        var regex = /^[a-zA-Z\s]+$/;
+        if (regex.test(jenisProduct.value) === false) {
+            alert ("Jenis Produk tidak valid")
         }
     }
 

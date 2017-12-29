@@ -1,9 +1,14 @@
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 'use strict';
 
+window.$ = window.jQuery = require('jquery')
+window.Tether = require('tether')
+window.Bootstrap = require('bootstrap')
+
 window.addEventListener('load', function() {
     var form = document.getElementById('orderForm');
     form.addEventListener('submit', function(event) {
+        console.log("check validity")
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
@@ -28,6 +33,12 @@ function checkAllInput() {
     }
 
     //Check Nomer LKO
+    if (noLKO.value != "") {
+        var regex = /^(\w{2}-\d{5}-\w+)$/;
+        if (regex.test(noLKO.value) === false) {
+            alert ("Format No.LKO salah. Ikuti contoh format berikut ini 'KP-14874-XVII'")
+        }
+    }
 
 
 }

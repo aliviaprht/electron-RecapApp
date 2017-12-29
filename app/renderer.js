@@ -35,23 +35,8 @@ $('document').ready(function () {
   window.model.getOrder()
 })
 
-window.ipc = window.ipc || {},
-function(n) {
-     ipc.messaging = {
 
-         sendOpenFormEvent: function() {
-             ipcRenderer.send('open-form', 'an-argument')
-         },
-
-        init: function() {
-            $('#new-order').click( function () {
-            ipc.messaging.sendOpenFormEvent()
-        })
-    }
- };
-
- n(function() {
-     ipc.messaging.init();
- })
-
-}(jQuery);
+$('#new-order').click( function () {           
+    ipcRenderer.send('open-form');
+    console.log("open-form")
+});

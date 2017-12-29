@@ -8,7 +8,7 @@ const os = require('os')
 const config = require(path.join(__dirname, 'package.json'))
 const model = require(path.join(__dirname, 'app', 'model.js'))
 var mainWindow = null
-let formWindow;
+var formWindow = null
 const BrowserWindow = electron.BrowserWindow
 
 app.on('ready', function () {
@@ -54,3 +54,29 @@ app.on('ready', function () {
   })
   
   app.on('window-all-closed', () => { app.quit() })
+
+   
+// Handle add item window
+function createAddWindow(){
+  formWindow = new BrowserWindow({
+    title:'Add Order'
+  });
+  formWindow.loadURL(`file://${__dirname}/app/html/formOrder.html`)
+  // Handle garbage collection
+  formWindow.on('close', function(){
+    formWindow = null;
+  });
+}
+
+// Catch open-form
+ipcMain.on('open-form', (event, arg)=> {
+  if(formWindow==null){
+    createAddWindow()
+  }
+})
+// Catch close-form
+ipcMain.on('close-form', (event, arg)=> {
+  if(formWindow!=null){
+    formWindow.close()
+  }
+})

@@ -2,7 +2,7 @@
 'use strict';
 
 window.addEventListener('load', function() {
-    var form = document.getElementById('needs-validation');
+    var form = document.getElementById('orderForm');
     form.addEventListener('submit', function(event) {
         if (form.checkValidity() === false) {
             event.preventDefault();
@@ -11,6 +11,26 @@ window.addEventListener('load', function() {
         form.classList.add('was-validated');
     }, false);
 }, false);
+
+function checkAllInput() {
+    var kodeart = document.orderForm.inputKodeArt;
+    var noLKO = document.orderForm.inputNoLKO;
+    var namaArtikel = document.orderForm.inputNamaArt;
+    var namaKonsumen = document.orderForm.inputNamaKonsumen;
+    var jenisProduct = document.orderForm.inputJenisProduct;
+
+    //Check Kode Artikel
+    if(kodeart.value != "") {
+        var regex = /^(\w{2}-\d{6}-\w+)$/;
+        if (regex.test(kodeart.value) === false) {
+            alert ("Format Kode Artikel salah. Ikutin contoh format berikut ini'CM-111217-IBUSUSI001'")
+        }
+    }
+
+    //Check Nomer LKO
+
+
+}
 
 $(document).ready(function(){
     $('form input[id="input2"]').prop("disabled", true);

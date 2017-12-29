@@ -39,9 +39,9 @@ window.ipc = window.ipc || {},
 function(n) {
      ipc.messaging = {
 
-         sendOpenFormEvent: function() {
-             ipcRenderer.send('open-form', 'an-argument')
-         },
+        sendOpenFormEvent: function() {
+            ipcRenderer.send('open-form', 'an-argument')
+        },
 
         init: function() {
             $('#new-order').click( function () {

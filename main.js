@@ -54,3 +54,23 @@ app.on('ready', function () {
   })
   
   app.on('window-all-closed', () => { app.quit() })
+
+   
+// Handle add item window
+function createAddWindow(){
+  formWindow = new BrowserWindow({});
+  formWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'formOrder.html'),
+    protocol: 'file:',
+    slashes:true
+  }));
+  // Handle garbage collection
+  formWindow.on('close', function(){
+    formWindow = null;
+  });
+}
+
+// Catch open-form
+ipcMain.on('open-form', (event, arg)=> {
+  formWindow.show()
+})

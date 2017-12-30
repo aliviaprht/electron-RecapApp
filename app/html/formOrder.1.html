@@ -13,7 +13,7 @@
 <body>
     <h1 class="header">Form New Order</h1>
 
-    <form class="container" id="orderForm" name="orderForm" method="post" onsubmit="return submitForm()" novalidate>
+    <form class="container" id="orderForm" name="orderForm" method="post" onsubmit="return checkAllInput()" novalidate>
 
         <div class="form-row">
             <div class="form-group col-6">
@@ -76,6 +76,68 @@
 
         <div class="form-row align-items-center">
             <div class="form-group col-6">
+                <label for="inputWarnaBahan">Warna Bahan</label>
+                <select class="form-control" id="inputWarnaBahan" required>
+                    <option selected>Choose...</option>
+                    <option value="Abu MD1">Abu MD1</option>
+                    <option value="Abu MD2">Abu MD2</option>
+                    <option value="Abu SDG">Abu SDG</option>
+                    <option value="Abu Tua">Abu Tua</option>
+                    <option value="Anggur">Anggur</option>
+                    <option value="Army">Army</option>
+                    <option value="Beby">Beby</option>
+                    <option value="Benhur T">Benhur T</option>
+                    <option value="Burgundi">Burgundi</option>
+                    <option value="B. Langit">B. Langit</option>
+                    <option value="B. SMA">B. SMA</option>
+                    <option value="C. Bata">C. Bata</option>
+                    <option value="C. Kakt">C. Kakt</option>
+                    <option value="C. Kopi">C. Kopi</option>
+                    <option value="C. Pramuka">C. Pramuka</option>
+                    <option value="C. Telur">C. Telur</option>
+                    <option value="Hitam">Hitam</option>
+                    <option value="H. Botol">H. Botol</option>
+                    <option value="H. Denim">H. Denim</option>
+                    <option value="KNari">KNari</option>
+                    <option value="K. Busuk">K. Busuk</option>
+                    <option value="K. Mas">K. Mas</option>
+                    <option value="Lumut">Lumut</option>
+                    <option value="Magenta">Magenta</option>
+                    <option value="Marun">Marun</option>
+                    <option value="Mentari">Mentari</option>
+                    <option value="Merah">Merah</option>
+                    <option value="M. Denim">M. Denim</option>
+                    <option value="M. Neut">M. Neut</option>
+                    <option value="M. 71">M. 71</option>
+                    <option value="M. 81">M. 81</option>
+                    <option value="M. 85">M. 85</option>
+                    <option value="Neut">Neut</option>
+                    <option value="Oren Bata">Oren Bata</option>
+                    <option value="Oren Cerah">Oren Cerah</option>
+                    <option value="Pandan">Pandan</option>
+                    <option value="Pink">Pink</option>
+                    <option value="Puji">Puji</option>
+                    <option value="Putih">Putih</option>
+                    <option value="Putih BW">Putih BW</option>
+                    <option value="Salm">Salm</option>
+                    <option value="Stabilo">Stabilo</option>
+                    <option value="Stabilo MD">Stabilo MD</option>
+                    <option value="TNI">TNI</option>
+                    <option value="Tosca">Tosca</option>
+                    <option value="Tosca MD">Tosca MD</option>
+                    <option value="Trong">Trong</option>
+                    <option value="Turqis">Turqis</option>
+                    <option value="Turqis MD">Turqis MD</option>
+                    <option value="Turqis T.">Turqis T.</option>
+                    <option value="Ungu Muda">Ungu Muda</option>
+                    <option value="Ungu Tua">Ungu Tua</option>
+                    <option value="Ungu Tua SPC">Ungu Tua SPC</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please insert "Warna Bahan"
+                </div>
+            </div>
+            <div class="form-group col-6">
                 <label for="inputJenisSablon">Jenis Sablon</label>
                 <select class="form-control" id="inputJenisSablon">
                     <option selected>Choose...</option>
@@ -91,28 +153,28 @@
                 <legend class="col-form-legend col-2">Letak Sablon</legend>
                 <div class="col-10">
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="DKi" name="letaksablon">DKi
+                        <input type="checkbox" value="DKi">DKi
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="DT" name="letaksablon">DT
+                        <input type="checkbox" value="DT">DT
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="BLK" name="letaksablon">BLK
+                        <input type="checkbox" value="BLK">BLK
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="BBL Luar" name="letaksablon">BBL Luar
+                        <input type="checkbox" value="BBL Luar">BBL Luar
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="BBL Luar + Dalam" name="letaksablon">BBL Luar + Dalam
+                        <input type="checkbox" value="BBL Luar + Dalam">BBL Luar + Dalam
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="Tangan Kiri" name="letaksablon">Tangan Kiri
+                        <input type="checkbox" value="Tangan Kiri">Tangan Kiri
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="Tangan Kanan" name="letaksablon">Tangan Kanan
+                        <input type="checkbox" value="Tangan Kanan">Tangan Kanan
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="1/2 TS" name="letaksablon">1/2 TS
+                        <input type="checkbox" value="1/2 TS">1/2 TS
                     </label>
                 </div>
             </div>
@@ -120,82 +182,6 @@
         <div class="form-group">
             <label for="inputKeterangan">Keterangan</label>
             <textarea class="form-control" id="inputKeterangan" rows="2"></textarea>
-        </div>
-        <div>
-            <div class="form-group col-8" id="warna">
-                <input type="hidden" value="1" id="jumlah_warna">
-                <div class="row">
-                        <legend class="col-form-legend">Detail Warna Bahan</legend>
-                </div>
-                <div class="row" id="warna_bahan_1">
-                    <label>Warna Bahan 1 :
-                    <select  id="inputWarnaBahan_1"  required>
-                        <option selected>Choose...</option>
-                        <option value="Abu MD1">Abu MD1</option>
-                        <option value="Abu MD2">Abu MD2</option>
-                        <option value="Abu SDG">Abu SDG</option>
-                        <option value="Abu Tua">Abu Tua</option>
-                        <option value="Anggur">Anggur</option>
-                        <option value="Army">Army</option>
-                        <option value="Beby">Beby</option>
-                        <option value="Benhur T">Benhur T</option>
-                        <option value="Burgundi">Burgundi</option>
-                        <option value="B. Langit">B. Langit</option>
-                        <option value="B. SMA">B. SMA</option>
-                        <option value="C. Bata">C. Bata</option>
-                        <option value="C. Kakt">C. Kakt</option>
-                        <option value="C. Kopi">C. Kopi</option>
-                        <option value="C. Pramuka">C. Pramuka</option>
-                        <option value="C. Telur">C. Telur</option>
-                        <option value="Hitam">Hitam</option>
-                        <option value="H. Botol">H. Botol</option>
-                        <option value="H. Denim">H. Denim</option>
-                        <option value="KNari">KNari</option>
-                        <option value="K. Busuk">K. Busuk</option>
-                        <option value="K. Mas">K. Mas</option>
-                        <option value="Lumut">Lumut</option>
-                        <option value="Magenta">Magenta</option>
-                        <option value="Marun">Marun</option>
-                        <option value="Mentari">Mentari</option>
-                        <option value="Merah">Merah</option>
-                        <option value="M. Denim">M. Denim</option>
-                        <option value="M. Neut">M. Neut</option>
-                        <option value="M. 71">M. 71</option>
-                        <option value="M. 81">M. 81</option>
-                        <option value="M. 85">M. 85</option>
-                        <option value="Neut">Neut</option>
-                        <option value="Oren Bata">Oren Bata</option>
-                        <option value="Oren Cerah">Oren Cerah</option>
-                        <option value="Pandan">Pandan</option>
-                        <option value="Pink">Pink</option>
-                        <option value="Puji">Puji</option>
-                        <option value="Putih">Putih</option>
-                        <option value="Putih BW">Putih BW</option>
-                        <option value="Salm">Salm</option>
-                        <option value="Stabilo">Stabilo</option>
-                        <option value="Stabilo MD">Stabilo MD</option>
-                        <option value="TNI">TNI</option>
-                        <option value="Tosca">Tosca</option>
-                        <option value="Tosca MD">Tosca MD</option>
-                        <option value="Trong">Trong</option>
-                        <option value="Turqis">Turqis</option>
-                        <option value="Turqis MD">Turqis MD</option>
-                        <option value="Turqis T.">Turqis T.</option>
-                        <option value="Ungu Muda">Ungu Muda</option>
-                        <option value="Ungu Tua">Ungu Tua</option>
-                        <option value="Ungu Tua SPC">Ungu Tua SPC</option>
-                    </select>
-                    </label>
-                    <div class="invalid-feedback">
-                        Please insert "Warna Bahan"
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                    <div class="col">
-                        <a class="btn btn-primary my-2 my-sm-0" id="tambah_warna">+ warna</a>
-                    </div>
-                </div>        
         </div>
         <fieldset class="form-group" id="form-pengiriman">
             <input type="hidden" id="jumlah_pengiriman" value="1">
@@ -280,7 +266,7 @@
             </div>
         </fieldset>
 
-        <div class="row">
+        <div class="row center">
             <div class="col">
                 <a class="btn btn-primary my-2 my-sm-0" id="tambah_pengiriman">+ Pengiriman</a>
             </div>
@@ -289,13 +275,13 @@
         <div class="row center">
             <div class="col">
                 <a class="btn btn-danger my-2 my-sm-0" id="cancel-form">Cancel</a>
-                <a class="btn btn-primary my-2 my-sm-0" id="save-form" onclick="return submitForm()">Save</a>
+                <a class="btn btn-primary my-2 my-sm-0" id="save-form">Save</a>
             </div>
         </div>
     </form>
 </body>
 <script src="../validateform.js"></script>
-<script src="../formfunction.js"></script>
+<script src="../form.js"></script>
 <script>
     require('../form.js')
 </script>

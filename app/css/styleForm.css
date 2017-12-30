@@ -46,10 +46,18 @@
     cursor: pointer;
 }
 .tag-ukuran{
-    width : 75px;
+    width : 80px;
     display: inline-block;
 }
 
 .center{
     text-align: center;
+}
+
+.label-warna{
+    display:inline-block;
+    color: blueviolet;
+}
+.form-control{
+    display: inline-block;
 }

@@ -188,4 +188,6 @@ function checkAllInput() {
     }
     return (checkartikel&&checkkodeart&&checkkonsumen&&checklko&&checkproduct)
 
+
 }
+

@@ -7,20 +7,31 @@
     margin-left: 5px;
     margin-bottom: 5px;
     margin-right: 5px;
-
 }
-
+.col-size {
+    width: 170px;
+    text-align: left;
+}
 .col {
-    text-align: center;
+    margin-top: 15px;
 }
 
+.col.btn{
+    text-align :center;
+}
+.pengiriman-title{
+    margin-top: 15px;
+}
+.form-size{
+    margin-top: 10px;
+}
 .checkbox-inline {
     margin-right: 5px;
 }
 
 .inputUkuran {
     margin-right: 10px;
-    width: 100px;
+    width: 65px;
 }
 
 .inputUkuranTable {
@@ -29,4 +40,16 @@
 
 #inputKeterangan {
     overflow: scroll;
+}
+
+.btn:hover{
+    cursor: pointer;
+}
+.tag-ukuran{
+    width : 75px;
+    display: inline-block;
+}
+
+.center{
+    text-align: center;
 }

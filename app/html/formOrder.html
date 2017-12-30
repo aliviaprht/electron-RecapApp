@@ -184,116 +184,105 @@
             <textarea class="form-control" id="inputKeterangan" rows="2"></textarea>
         </div>
 
-        <fieldset class="form-group" id="pengiriman_1">
+        <fieldset class="form-group" id="form-pengiriman">
+            <input type="hidden" id="jumlah_pengiriman" value="1">
             <div class="row">
                 <legend class="col-form-legend">Detail Pengiriman dan Ukuran</legend>
-                <br>
-                <h6>Pengiriman 1</h6>
-
             </div>
-            <div class="row">
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 2" id="check2"> Uk. 2
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input2" placeholder="Jml Uk.2" input>
+            <div class="row" id="pengiriman_1">
+                <div class="col-size">
+                    <h6 class="pengiriman-title">Pengiriman 1</h6>
                 </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 4" id="check4"> Uk. 4
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input4" placeholder="Jml Uk.4" input>
+                <div class="col-size">
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 2 </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input2_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 4 </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input4_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 6 </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input6_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 8 </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input8_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 10 </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input10_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 12 </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input12_1" input>
+                    </div>
                 </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 6" id="check6"> Uk. 6
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input6" placeholder="Jml Uk.6" input>
+                <div class="col-size">
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran XS </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="inputXS_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran S </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="inputS_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran M </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="inputM_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran L </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="inputL_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran XL </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="inputXL_1" input>
+                    </div>
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 3L </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input3L_1" input>
+                    </div>
                 </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 8" id="check8"> Uk. 8
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input8" placeholder="Jml Uk.8" input>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 10" id="check10"> Uk. 10
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input10" placeholder="Jml Uk.10" input>
-                </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 12" id="check12"> Uk. 12
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input12" placeholder="Jml Uk.12" input>
-                </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. XS" id="checkXS"> Uk. XS
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputXS" placeholder="Jml Uk.XS" input>
-                </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. S" id="checkS"> Uk. S
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputS" placeholder="Jml Uk.S" input>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. M" id="checkM"> Uk. M
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputM" placeholder="Jml Uk.M" input>
-                </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. L" id="checkL"> Uk. L
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputL" placeholder="Jml Uk.L" input>
-                </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. XL" id="checkXL"> Uk. XL
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="inputXL" placeholder="Jml Uk.XL" input>
-                </div>
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 3L" id="check3L"> Uk. 3L
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input3L" placeholder="Jml Uk.3L" input>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <label class="checkbox-inline">
-                        <input type="checkbox" value="Uk. 4L" id="check4L"> Uk. 4L
-                    </label>
-                    <input type="text" class="form-control-sm inputUkuran" id="input4L" placeholder="Jml Uk.4L" input>
+                <div class="col-size">
+                    <div class="form-size">
+                        <div class="tag-ukuran"> Ukuran 4L </div>
+                        :
+                        <input type="text" class="form-control-sm inputUkuran" id="input4L_1" input>
+                    </div>
                 </div>
             </div>
         </fieldset>
 
         <div class="row">
             <div class="col">
-                <button class="btn btn-primary my-2 my-sm-0" id="tambah_pengiriman">+ Pengiriman</button>
+                <a class="btn btn-primary my-2 my-sm-0" id="tambah_pengiriman">+ Pengiriman</a>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row center">
             <div class="col">
-                <button class="btn btn-danger my-2 my-sm-0" id="cancel-form">Cancel</button>
+                <a class="btn btn-danger my-2 my-sm-0" id="cancel-form">Cancel</a>
                 <button class="btn btn-primary my-2 my-sm-0" type="submit" id="save-form">Save</button>
             </div>
         </div>
     </form>
 </body>
 <script src="../validateform.js"></script>
+<script src="../form.js"></script>
 <script>
     require('../form.js')
 </script>

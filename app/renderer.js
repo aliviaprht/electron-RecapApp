@@ -15,6 +15,7 @@ window.view = require(path.join(webRoot, 'view.js'))
 window.model = require(path.join(webRoot, 'model.js'))
 window.model.db = path.join(app.getPath('userData'), 'example.db')
 window.form = require(path.join(webRoot, 'form.js'))
+window.form = require(path.join(webRoot, 'detail.js'))
 
 // Compose the DOM from separate HTML concerns; each from its own file.
 let htmlPath = path.join(app.getAppPath(), 'app', 'html')

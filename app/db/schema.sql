@@ -10,15 +10,9 @@ CREATE TABLE "order" (
 CREATE TABLE "produk" (
 	 "id_produk" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
      "id_order" INTEGER NOT NULL,
-     "jenis_product" TEXT NOT NULL,
+     "jenis_produk" TEXT NOT NULL,
      "jenis_bahan" TEXT NOT NULL,
      "jenis_sablon" TEXT
-);
-CREATE TABLE "produk_detail" (
-	 "id_produk_detail" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-     "id_produk" INTEGER NOT NULL,
-     "warna_bahan" TEXT NOT NULL,
-     "jenis_bahan" TEXT NOT NULL
 );
 CREATE TABLE "letak_sablon" (
      "id_letak_sablon" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,

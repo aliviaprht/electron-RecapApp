@@ -71,7 +71,7 @@ $('#new-order').click( function () {
 $('#modalNext button.btn-primary').click(function(){
   var id = this.id.split('_')[1]
   var date = new Date()
-  var today = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear() 
+  var today = '"'+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()+'"'
   console.log("click save to id="+id)
   var order = window.model.getOrderbyID(id)[0]
   var currentprocess = parseInt(order.proses)
@@ -109,4 +109,10 @@ $('#modalDone button.btn-primary').click(function(){
   setTimeout(function() {
       $('#success-save').modal('hide');
   }, 2000);
+})
+$('#close-submit').click()
+
+ipcRenderer.on('close-form-submit',(event,arg)=>{
+  console.log('close-form-submit')
+  window.model.getOrder()
 })

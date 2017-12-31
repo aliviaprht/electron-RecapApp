@@ -64,6 +64,9 @@ function submitForm(){
         savePengiriman(id_order,pengiriman)
         saveTanggalProses(id_order)
     }
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+    $('#success-submit').modal('show');
 }
 function saveTanggalProses(id_order){
     var today = new Date()

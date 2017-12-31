@@ -61,3 +61,13 @@
 .form-control{
     display: inline-block;
 }
+.not-valid{
+    background:rgba(223, 76, 76, 0.815);
+}
+.success-save-text{
+    text-align: center;
+}
+.ok-button{
+    text-align:center;
+    width:40px;
+}

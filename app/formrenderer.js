@@ -34,3 +34,7 @@ function hapus_warna(id){
     $('#warna_bahan_'+jumlah_warna).remove()
     $('#hapus_warna_'+jumlah_warna_baru).show()
 }
+
+$('#close-submit').click(function(){
+    ipcRenderer.send('close-form-submit')
+})

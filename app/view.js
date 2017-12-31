@@ -82,7 +82,7 @@ module.exports.showModal1 = function (pid) {
     $('#isiJenisProduk').text(rowProduk[0].jenis_produk)
     $('#isiJenisBahan').text(rowProduk[0].jenis_bahan)
     $('#isiJenisSablon').text(rowProduk[0].jenis_sablon)
-    $('#isiKeterangan').text(rowProduk[0].keterangan)
+    $('#isiKet').text(rowProduk[0].keterangan)
 
     //Get Letak Sablom
     let rowLetakSablon = model.getLetakSablonbyID(rowProduk[0].id_produk)

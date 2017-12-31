@@ -80,3 +80,9 @@ ipcMain.on('close-form', (event, arg)=> {
     formWindow.close()
   }
 })
+ipcMain.on('close-form-submit', (event, arg)=> {
+  if(formWindow!=null){
+    mainWindow.webContents.send('close-form-submit')
+    formWindow.close()
+  }
+})

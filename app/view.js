@@ -16,16 +16,6 @@ module.exports.showOrder = function (rowsObject) {
   for (let rowId in rowsObject) {
     let markup = ''
     let row = rowsObject[rowId]
-    markup += '<div class="box-process" style="background:'+row.warna+'">' +
-              '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
-              '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
-              '<button type="button" class="btn btn-primary btn-sm detail" id="detail_'+row.id_order+'">'+
-                  'Details' +
-              '</button>' +
-              '<button type="button" class="btn btn-success btn-sm next" id="next_'+row.id_order+'">' +
-                  'Next' +
-              '</button>'+
-              '</div>'
     let proses = ''
     switch(row.proses){
       case 0: proses = '#LKO'; break;
@@ -37,6 +27,26 @@ module.exports.showOrder = function (rowsObject) {
       case 6: proses = '#PACKING'; break;
       case 7: proses = '#BELUM_KIRIM'; break;
       case 8: proses = '#SUDAH_KIRIM';
+    }
+    if(row.proses==8){
+        markup += '<div class="box-process" style="background:'+row.warna+'">' +
+        '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
+        '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
+        '<button type="button" class="btn btn-warning btn-sm done" id="done_'+row.id_order+'">' +
+            'Done' +
+        '</button>'+
+        '</div>'
+    }else{
+        markup += '<div class="box-process" style="background:'+row.warna+'">' +
+        '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
+        '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
+        '<button type="button" class="btn btn-primary btn-sm detail" id="detail_'+row.id_order+'">'+
+            'Details' +
+        '</button>' +
+        '<button type="button" class="btn btn-success btn-sm next" id="next_'+row.id_order+'">' +
+            'Next' +
+        '</button>'+
+        '</div>'
     }
     $(proses).append(markup);
   }
@@ -50,6 +60,12 @@ module.exports.showOrder = function (rowsObject) {
     $(obj).on('click', function () {
       console.log("next id="+this.id.split('_')[1])
       window.view.showModal2(this.id.split('_')[1])
+    })
+  })
+  $('#order-list button.done').each(function (idx, obj) {
+    $(obj).on('click', function () {
+      console.log("done id="+this.id.split('_')[1])
+      window.view.showModal3(this.id.split('_')[1])
     })
   })
 }
@@ -167,3 +183,7 @@ module.exports.showModal2 = function (id) {
   $('#modalNext button.btn-primary').attr('id','save-next_'+id)
   $('#modalNext').modal('show')
 }
+module.exports.showModal3 = function (id) {
+    $('#modalDone button.btn-primary').attr('id','set-done_'+id)
+    $('#modalDone').modal('show')
+  }

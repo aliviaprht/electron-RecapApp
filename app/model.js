@@ -121,14 +121,14 @@ module.exports.getOrder = function () {
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     let query = 'SELECT id_order,nama_konsumen,warna,jumlah,proses FROM `order` NATURAL JOIN `konsumen` NATURAL JOIN `tanggal_proses`' + 
-     'WHERE `proses` < 8 OR `SUDAH_KIRIM` =' + date;
+     'WHERE `proses` < 9';
     try {
       let row = db.exec(query)
       if (row !== undefined && row.length > 0) {
         console.log("hasilgetorder:",row[0])
         row = _rowsFromSqlDataObject(row[0])
-        view.showOrder(row)
       }
+      view.showOrder(row)
     } catch (error) {
       console.log('model.getOrder', error.message)
     } finally {

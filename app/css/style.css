@@ -59,6 +59,13 @@ button.next{
     margin-left: 2px;
     margin-right: 2px;
 }
+button.done{
+    width:57px;
+    border-radius: 5pt;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
 .text-jumlah{
     padding:5px;
     margin-bottom :15px;
@@ -75,4 +82,7 @@ p {
 }
 h3{
     margin-left:12px;
+}
+.btn:hover{
+    cursor:pointer;
 }

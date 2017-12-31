@@ -181,10 +181,10 @@ module.exports.getOrderbyID = function (pid) {
       }
   }
 }
-module.exports.getAllKonsumenColor = function () {
+module.exports.getAllKonsumen = function () {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
-    let query = 'SELECT `warna` FROM `konsumen`'
+    let query = 'SELECT * FROM `konsumen`'
     let statement = db.prepare(query)
     try {
       let row = db.exec(query)
@@ -343,6 +343,46 @@ module.exports.getTanggal_ProsesbyID = function (pid) {
           }
       } catch (error) {
           console.log('model.getTanggal_Proses', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
+module.exports.getAllKodeArtikel = function () {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT `kode_artikel` FROM `order`'
+      try {
+        let row = db.exec(query)
+        if (row !== undefined && row.length > 0) {
+          row = _rowsFromSqlDataObject(row[0])
+          return row
+        } else {
+          return []
+              console.log('model.getAllKodeArtikel', 'No data found')
+          }
+      } catch (error) {
+          console.log('model.getKodeArtikel', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
+module.exports.getAllNoLKO = function () {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT `no_lko` FROM `order`'
+      try {
+        let row = db.exec(query)
+        if (row !== undefined && row.length > 0) {
+          row = _rowsFromSqlDataObject(row[0])
+          return row
+        } else {
+          return []
+              console.log('model.getAllNoLKO', 'No data found')
+          }
+      } catch (error) {
+          console.log('model.getAllNoLKO', error.message)
       } finally {
           SQL.dbClose(db, window.model.db)
       }

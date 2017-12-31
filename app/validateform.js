@@ -1,4 +1,3 @@
-
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 function getRandomColor() {
     var allcolor = model.getAllKonsumenColor()
@@ -64,10 +63,14 @@ function submitForm(){
         savePengiriman(id_order,pengiriman)
         saveTanggalProses(id_order)
         window.view.showModal3(id_order)
+        $('#success-submit').modal('show');
+        setTimeout(function() {
+            $('#success-submit').modal('hide');
+            ipcRenderer.send('close-form-submit')
+        }, 2000);
     }
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
-    $('#success-submit').modal('show');
 }
 function saveTanggalProses(id_order){
     var today = new Date()

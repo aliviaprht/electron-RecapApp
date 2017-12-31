@@ -17,50 +17,65 @@
 
         <div class="form-row">
             <div class="form-group col-6">
-                <label for="inputKodeArt">Kode Artikel</label>
+                <label for="inputKodeArt" id="inputKodeArt_label">Kode Artikel</label>
                 <input type="text" class="form-control" id="inputKodeArt" name="inputKodeArt" required>
                 <div class="invalid-feedback">
                     Please insert "Kode Artikel"
                 </div>
+                <div class="error-message" id="error_inputKodeArt">
+                    <!--- error message -->
+                </div>
             </div>
             <div class="form-group col-6">
-                <label for="inputNoLKO">No. LKO</label>
+                <label for="inputNoLKO" id="inputNoLKO_label">No. LKO</label>
                 <input type="text" class="form-control" id="inputNoLKO" name="inputNoLKO" required>
                 <div class="invalid-feedback">
                     Please insert "No.LKO"
                 </div>
+                <div class="error-message" id="error_inputNoLKO">
+                    <!--- error message -->
+                </div>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-6">
-                <label for="inputNamaArt">Nama Artikel</label>
+                <label for="inputNamaArt" id="inputNamaArt_label">Nama Artikel</label>
                 <input type="text" class="form-control" id="inputNamaArt" name="inputNamaArt" required>
                 <div class="invalid-feedback">
                     Please insert "Nama Artikel"
                 </div>
+                <div class="error-message" id="error_inputNamaArt">
+                    <!--- error message -->
+                </div>
             </div>
             <div class="form-group col-6">
-                <label for="inputJenisProduct">Jenis Product</label>
+                <label for="inputJenisProduct" id="inputJenisProduct_label">Jenis Product</label>
                 <input type="text" class="form-control" id="inputJenisProduct" name="inputJenisProduct" required>
                 <div class="invalid-feedback">
                     Please insert "Jenis Product"
+                </div>
+                <div class="error-message" id="error_inputJenisProduct">
+                    <!--- error message -->
                 </div>
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group col-6">
-                <label for="inputNamaKonsumen">Nama Konsumen</label>
+                <label for="inputNamaKonsumen" id="inputNamaKonsumen_label">Nama Konsumen</label>
                 <input type="text" class="form-control" id="inputNamaKonsumen" name="inputNamaKonsumen" required>
                 <div class="invalid-feedback">
                     Please insert "Nama Konsumen"
                 </div>
+                <div class="input-message" id="message_inputNamaKonsumen">
+                    <!--- error message -->
+                </div>
             </div>
             <div class="form-group col-6">
-                <label for="inputJenisBahan">Jenis Bahan</label>
+                <label for="inputJenisBahan" id="inputJenisBahan_label">Jenis Bahan</label>
                 <select type="text" class="form-control" id="inputJenisBahan" name="inputJenisBahan" required>
-                    <option selected>Choose...</option>
+                    <option value="" selected>Choose...</option>
                     <option value="Cotton 20S">Cotton 20S</option>
                     <option value="Cotton 24S">Cotton 24S</option>
                     <option value="Cotton 30S">Cotton 30S</option>
@@ -71,24 +86,30 @@
                 <div class="invalid-feedback">
                     Please choose "Jenis Bahan"
                 </div>
+                <div class="error-message" id="error_inputJenisBahan">
+                    <!--- error message -->
+                </div>
             </div>
         </div>
 
         <div class="form-row align-items-center">
             <div class="form-group col-6">
-                <label for="inputJenisSablon">Jenis Sablon</label>
+                <label for="inputJenisSablon" id="inputJenisSablon_label">Jenis Sablon</label>
                 <select class="form-control" id="inputJenisSablon">
-                    <option selected>Choose...</option>
+                    <option value="" selected>Choose...</option>
                     <option value="Karet">Karet</option>
                     <option value="Pigment">Pigment</option>
                     <option value="Plastisol">Plastisol</option>
                     <option value="Discharge/SW">Discharge/SW</option>
                 </select>
+                <div class="error-message" id="error_inputJenisSablon">
+                    <!--- error message -->
+                </div>
             </div>
         </div>
         <fieldset class="form-group">
-            <div class="row">
-                <legend class="col-form-legend col-2">Letak Sablon</legend>
+            <div class="row" id="inputLetakSablon">
+                <label class="col-form-legend col-2" id="inputJenisSablon_label"></label>>Letak Sablon</label>
                 <div class="col-10">
                     <label class="checkbox-inline">
                         <input type="checkbox" value="DKi" name="letaksablon">DKi
@@ -115,6 +136,9 @@
                         <input type="checkbox" value="1/2 TS" name="letaksablon">1/2 TS
                     </label>
                 </div>
+                <div class="error-message" id="error_inputLetakSablon">
+                    <!--- error message -->
+                </div>
             </div>
         </fieldset>
         <div class="form-group">
@@ -128,9 +152,9 @@
                         <legend class="col-form-legend">Detail Warna Bahan</legend>
                 </div>
                 <div class="row" id="warna_bahan_1">
-                    <label>Warna Bahan 1 :
+                    <label id="inputWarnaBahan_1_label">Warna Bahan 1 :
                     <select  id="inputWarnaBahan_1"  required>
-                        <option selected>Choose...</option>
+                        <option value="" selected>Choose...</option>
                         <option value="Abu MD1">Abu MD1</option>
                         <option value="Abu MD2">Abu MD2</option>
                         <option value="Abu SDG">Abu SDG</option>
@@ -190,6 +214,9 @@
                         Please insert "Warna Bahan"
                     </div>
                 </div>
+            </div>
+            <div class="error-message" id="error_inputWarnaBahan">
+                <!--- error message -->
             </div>
             <div class="row">
                     <div class="col">
@@ -280,6 +307,9 @@
             </div>
         </fieldset>
 
+        <div class="error-message" id="error_form-pengiriman">
+            <!--- error message -->
+        </div>
         <div class="row">
             <div class="col">
                 <a class="btn btn-primary my-2 my-sm-0" id="tambah_pengiriman">+ Pengiriman</a>
@@ -306,7 +336,6 @@
         </div>
     </div>
 </body>
-<script src="../validateform.js"></script>
 <script src="../formrenderer.js"></script>
 <script>
     require('../form.js')

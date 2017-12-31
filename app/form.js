@@ -114,7 +114,7 @@ $('#tambah_warna').click(function(){
     var opsi = '<div class="row" id="warna_bahan_'+jumlah_warna_baru+'">' +
                 '<label>Warna Bahan '+jumlah_warna_baru+' : '+
                 '<select  id="inputWarnaBahan_'+jumlah_warna_baru+'"  required>"'+
-                '<option selected>Choose...</option>' +
+                '<option value="" selected>Choose...</option>' +
                 '<option value="Abu MD1">Abu MD1</option>' +
                 '<option value="Abu MD2">Abu MD2</option>' +
                 '<option value="Abu SDG">Abu SDG</option>' +

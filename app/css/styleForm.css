@@ -61,13 +61,28 @@
 .form-control{
     display: inline-block;
 }
-.not-valid{
-    background:rgba(223, 76, 76, 0.815);
-}
 .success-save-text{
     text-align: center;
 }
-.ok-button{
-    text-align:center;
-    width:40px;
+
+label.has-error{
+    color:rgb(241, 70, 70);
+}
+label.has-success{
+    color:rgb(80, 167, 99);
+}
+
+input.has-error{
+    border: 1px solid rgb(241, 70, 70);
+}
+input.has-success{
+    border:1px solid rgb(80, 167, 99);
+}
+.error-message{
+    color:rgb(241, 70, 70);
+    font-size: 8pt;
+}
+.input-message{
+    color:rgb(63, 165, 224);
+    font-size: 8pt;
 }

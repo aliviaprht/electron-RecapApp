@@ -63,6 +63,7 @@ function submitForm(){
         saveWarna(id_produk,warna)
         savePengiriman(id_order,pengiriman)
         saveTanggalProses(id_order)
+        window.view.showModal3(id_order)
     }
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;

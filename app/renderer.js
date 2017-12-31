@@ -99,6 +99,7 @@ $('#modalNext button.btn-primary').click(function(){
       $('#success-save').modal('hide');
   }, 2000);
 })
+
 $('#modalDone button.btn-primary').click(function(){
   var id = this.id.split('_')[1]
   window.model.updateData("order","proses",9,"`id_order`="+id)

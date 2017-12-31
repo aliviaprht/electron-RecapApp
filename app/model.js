@@ -4,7 +4,6 @@ const path = require('path')
 const fs = require('fs')
 const SQL = require('sql.js')
 const view = require(path.join(__dirname, 'view.js'))
-
 /*
   SQL.js returns a compact object listing the columns separately from the
   values or rows of data. This function joins the column names and
@@ -120,7 +119,7 @@ module.exports.getOrder = function () {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
     var today = new Date();
-    var date = today.getFullYear()+'-'+today.getMonth()+'-'+today.getDate();
+    var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
     let query = 'SELECT id_order,nama_konsumen,warna,jumlah,proses FROM `order` NATURAL JOIN `konsumen` NATURAL JOIN `tanggal_proses`' + 
      'WHERE `proses` < 8 OR `SUDAH_KIRIM` =' + date;
     try {
@@ -137,87 +136,24 @@ module.exports.getOrder = function () {
     }
   }
 }
-module.exports.addorderdumb =function(){
-    let db = SQL.dbOpen(window.model.db)
-    if (db !== null) {
-      let query = 'INSERT INTO `order` VALUES (null,"kodeart","dumb","no lko",1,10,1)'
-      let statement = db.prepare(query)
-      try {
-        if (statement.run()) {
-          console.log('success addorderdumb')
-        } else {
-        console.log('Query failed for addorderdumb')
-        }
-      } catch (error) {
-        console.log('model.addorderdumb', error.message)
-      } finally {
-        SQL.dbClose(db, window.model.db)
-      }
-    }
-}
-module.exports.addkonsumendumb =function(){
+module.exports.getProdukIDbyOrder = function (pid) {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
-    let query = 'INSERT INTO `konsumen` VALUES (null,"ibu susi","blue")'
-    let statement = db.prepare(query)
+    let query = 'SELECT * FROM `produk` WHERE `id_order` IS ?'
+    let statement = db.prepare(query, [pid])
     try {
-      if (statement.run()) {
-        console.log('success addkonsumendumb')
+      if (statement.step()) {
+        let values = [statement.get()]
+        let columns = statement.getColumnNames()
+        return _rowsFromSqlDataObject({values: values, columns: columns})
       } else {
-        console.log('Query failed for addkonsumendumb')
+        console.log('model.getProdukIDbyOrder', 'No data found for id_order =', pid)
       }
     } catch (error) {
-      console.log('model.addkonsumendumb', error.message)
+      console.log('model.getProdukIDbyOrder', error.message)
     } finally {
       SQL.dbClose(db, window.model.db)
     }
-  }
-}
-module.exports.addprosesdumb=function(id_order){
-  let db = SQL.dbOpen(window.model.db)
-  if (db !== null) {
-    var today = new Date();
-    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    let query = 'INSERT INTO tanggal_proses(id_order,LKO) VALUES('+id_order+',"'+date+'")'
-    console.log(query)
-    let statement = db.prepare(query)
-    try {
-      if (statement.run()) {
-        console.log('success addprosesdumb')
-      } else {
-        console.log('Query failed for addprosesdumb')
-      }
-    } catch (error) {
-      console.log('model.addprosesdumb', error.message)
-    } finally {
-      SQL.dbClose(db, window.model.db)
-    }
-  }
-}
-module.exports.addDumb = function(){
-  window.model.addorderdumb()
-  window.model.addkonsumendumb()
-  let values, columns = null;
-    let db = SQL.dbOpen(window.model.db)
-    if (db !== null) {
-      let query = 'SELECT id_order FROM `order` WHERE `kode_artikel` = "kodeart"'
-      let statement = db.prepare(query)
-      try {
-        if (statement.step()) {
-          values = [statement.get()]
-          columns = statement.getColumnNames()
-          console.log(values)
-        } else {
-          console.log('model.addDumb', 'No data found for kode_artikel="kodeart"')
-        }
-      } catch (error) {
-        console.log('model.addDumb', error.message)
-      } finally {
-        SQL.dbClose(db, window.model.db)
-      }
-    }
-  if(values!=null){
-    window.model.addprosesdumb(values)
   }
 }
 /*
@@ -234,10 +170,10 @@ module.exports.getOrderbyID = function (pid) {
         let columns = statement.getColumnNames()
         return _rowsFromSqlDataObject({values: values, columns: columns})
       } else {
-        console.log('model.getPeople', 'No data found for id =', pid)
+        console.log('model.getOrderbyID', 'No data found for id =', pid)
       }
     } catch (error) {
-      console.log('model.getPeople', error.message)
+      console.log('model.getOrderbyID', error.message)
     } finally {
       SQL.dbClose(db, window.model.db)
     }
@@ -249,14 +185,12 @@ module.exports.getAllKonsumenColor = function () {
     let query = 'SELECT `warna` FROM `konsumen`'
     let statement = db.prepare(query)
     try {
-      if (statement.step()) {
-        let values = [statement.get()]
-        let columns = statement.getColumnNames()
-        console.log("success getAllKonsumenColor")
-        return _rowsFromSqlDataObject({values: values, columns: columns})
-      } else {
+      let row = db.exec(query)
+      if (row !== undefined && row.length > 0) {
+        row = _rowsFromSqlDataObject(row[0])
+        return row
+      }else{
         return null
-        console.log('model.getAllKonsumenColor', 'No color')
       }
     } catch (error) {
       console.log('model.getAllKonsumenColor', error.message)
@@ -265,7 +199,7 @@ module.exports.getAllKonsumenColor = function () {
     }
   }
 }
-module.exports.getKonsumenbyName = function (name) {
+module.exports.getKonsumenbyName = function (nama) {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
     let query = 'SELECT * FROM `konsumen` WHERE `nama_konsumen` IS ?'
@@ -276,8 +210,8 @@ module.exports.getKonsumenbyName = function (name) {
         let columns = statement.getColumnNames()
         return _rowsFromSqlDataObject({values: values, columns: columns})
       } else {
-        return null
         console.log('model.getKonsumenbyName', 'No data found for nama =', nama)
+        return null
       }
     } catch (error) {
       console.log('model.getKonsumenbyName', error.message)
@@ -292,7 +226,7 @@ module.exports.getKonsumenbyName = function (name) {
 module.exports.getOrderbyArticle = function (code) {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
-    let query = 'SELECT * FROM `order` NATURAL JOIN `konsumen` WHERE `kode_artikel` IS ?'
+    let query = 'SELECT * FROM `order` WHERE `kode_artikel` IS ?'
     let statement = db.prepare(query, [code])
     try {
       if (statement.step()) {
@@ -360,16 +294,11 @@ module.exports.saveFormData = function (tableName, keyValue, callback) {
       let query = 'INSERT OR REPLACE INTO `' + tableName
       query += '` (`' + keyValue.columns.join('`, `') + '`)'
       query += ' VALUES (' + _placeHoldersString(keyValue.values.length) + ')'
+      console.log(query)
       let statement = db.prepare(query)
       try {
         if (statement.run(keyValue.values)) {
-          $('#' + keyValue.columns.join(', #'))
-          .addClass('form-control-success')
-          .animate({class: 'form-control-success'}, 1500, function () {
-            if (typeof callback === 'function') {
-              callback()
-            }
-          })
+          console.log("model.saveFormData to ",tableName)
         } else {
           console.log('model.saveFormData', 'Query failed for', keyValue.values)
         }

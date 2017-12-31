@@ -4,15 +4,20 @@ const model = require(path.join(__dirname, 'model.js'))
 const detail = require(path.join(__dirname, 'detail.js'))
 
 module.exports.showOrder = function (rowsObject) {
+  console.log("show order")
   let markup = ''
   for (let rowId in rowsObject) {
     let row = rowsObject[rowId]
-    markup += '<div class="box-' + row.warna + '">' + 
-    '<p class="font-weight-bold">' + row.nama_konsumen + '</p><p>' +
-    row.jumlah + ' potong</p>' + '<button type="button" class="btn btn-primary btn-sm"  data-toggle="modal"' +
-    'id="detail_' + row.id_order + '" data-target="#modalDetail_' + row.id_order + '">' + 'See Details </button>' +
-    '<button type="button" class="btn btn-primary btn-sm"  data-toggle="modal"' +
-    'id="detail_' + row.id_order + '" data-target="#modalNext_' + row.id_order + '">' + 'Next </button>'
+    markup += '<div class="box-process" style="background:'+row.warna+'">' +
+              '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
+              '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
+              '<button type="button" class="btn btn-primary btn-sm detail" data-toggle="modal" data-target="#modalSeeDetails">'+
+                  'Details' +
+              '</button>' +
+              '<button type="button" class="btn btn-success btn-sm next" data-toggle="modal" data-target="#modalNext">' +
+                  'Next' +
+              '</button>'+
+              '</div>'
     let proses = ''
     switch(row.proses){
       case 0: proses = '#LKO'; break;
@@ -42,15 +47,15 @@ module.exports.showOrder = function (rowsObject) {
 module.exports.showModal1 = function (pid) {
     //Get Order
     let rowOrder = detail.getOrderbyID(pid)
-    $('#isiKodeArt').text(rowOrder.kode_artikel)
-    $('#isiNamaArt').text(rowOrder.nama_artikel)
-    $('#isiNoLKO').text(rowOrder.no_lko)
+    $('#isiKodeArt').text(rowOrder[0].kode_artikel)
+    $('#isiNamaArt').text(rowOrder[0].nama_artikel)
+    $('#isiNoLKO').text(rowOrder[0].no_lko)
 
     //Get Produk
     let rowProduk = detail.getProdukbyID(pid)
-    $('#isiJenisProduk').text(rowProduk.jenis_produk)
-    $('#isiJenisBahan').text(rowProduk.jenis_bahan)
-    $('#isiJenisSablon').text(rowProduk.jenis_sablon)
+    $('#isiJenisProduk').text(rowProduk[0].jenis_produk)
+    $('#isiJenisBahan').text(rowProduk[0].jenis_bahan)
+    $('#isiJenisSablon').text(rowProduk[0].jenis_sablon)
 
     //Get Letak Sablom
     let rowLetakSablon = detail.getLetakSablonbyID(rowProduk.id_produk)

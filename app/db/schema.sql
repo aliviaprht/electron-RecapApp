@@ -3,7 +3,7 @@ CREATE TABLE "order" (
 	 "kode_artikel" TEXT NOT NULL UNIQUE,
 	 "nama_artikel" TEXT NOT NULL,
      "no_lko" TEXT NOT NULL UNIQUE,
-     "id_konsumen" TEXT NOT NULL,
+     "id_konsumen" INTEGER NOT NULL,
      "jumlah" INTEGER NOT NULL DEFAULT 0,
      "proses" INTEGER NOT NULL DEFAULT 0
 );
@@ -28,11 +28,7 @@ CREATE TABLE "pengiriman" (
      "id_pengiriman" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
 	 "id_order" INTEGER NOT NULL,
      "urutan" INTEGER NOT NULL,
-     "status_pengiriman" INTEGER NOT NULL DEFAULT 0
-);
-CREATE TABLE "jumlah_pengiriman" (
-     "id_jumlah_pengiriman" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-     "id_pengiriman" INTEGER NOT NULL,
+     "status_pengiriman" INTEGER NOT NULL DEFAULT 0,
      "size_2" INTEGER NOT NULL DEFAULT 0,
      "size_4" INTEGER NOT NULL DEFAULT 0,
      "size_6" INTEGER NOT NULL DEFAULT 0,
@@ -47,7 +43,6 @@ CREATE TABLE "jumlah_pengiriman" (
      "size_3L" INTEGER NOT NULL DEFAULT 0,
      "size_4L" INTEGER NOT NULL DEFAULT 0
 );
-
 CREATE TABLE "tanggal_proses" (
      "id_proses" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
      "id_order" INTEGER NOT NULL,

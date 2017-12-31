@@ -2,25 +2,23 @@
     text-align: center;
 }
 
-.row {
-    margin-top: 5px;
-    margin-left: 5px;
-    margin-bottom: 5px;
-    margin-right: 5px;
-
+.row-process:after {
+    content: "";
+    display: table;
+    clear: both;
 }
-
 .container {
-    margin: 5px auto;
+    margin: auto;
 }
-.col {
-    border: 1px solid black;
+.col-process {
+    float: left;
+    border: 1px solid white;
     padding-bottom: 5px;
     text-align: center;
     height: auto;
-    width: 100px;
+    width :11%;
+    min-width: 100px;
 }
-
 .table-container{
     overflow: scroll;
 }
@@ -28,46 +26,40 @@
 .table-title {
     background-color: aquamarine;
     text-align: center;
-    margin: 5px 0px 5px 0px;
     height: 50px;
+    margin-bottom : 8px;
 }
 
-.box-pink {
-    border: 1px solid black;
+
+.box-process {
+    border: 1px solid rgb(158, 158, 158);
     text-align: center;
     font-size: 14px;
     height: auto;
-    width: 100px;
+    width :100%;
     padding: 2px;
-    background-color: pink;
-    border-radius: 5%;
-    margin-bottom: 3px;
-}
-
-.box-orange {
-    border: 1px solid black;
-    text-align: center;
-    font-size: 14px;
-    height: auto;
-    width: 100px;
-    padding: 2px;
-    background-color: rgba(255, 141, 100, 0.89);
-    border-radius: 5%;
-    margin-bottom: 3px;
-}
-
-.box-green {
-    border: 1px solid black;
-    text-align: center;
-    font-size: 14px;
-    height: auto;
-    width: 100px;
-    padding: 2px;
-    background-color: lightgreen;
     border-radius: 5%;
     margin-bottom: 3px;
 }
 
 .namaInfo {
     color: maroon;
+}
+button.detail {
+    width:57px;
+    border-radius: 5pt;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+button.next{
+    width:57px;
+    border-radius: 5pt;
+    margin-bottom: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+.text-jumlah{
+    padding:5px;
+    margin-bottom :15px;
 }

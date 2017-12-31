@@ -1,7 +1,22 @@
 'use strict'
+
+const fs = require('fs')
+const path = require('path')
+const app = require('electron').remote.app
+const cheerio = require('cheerio')
+const {ipcRenderer} = require('electron')
+
 window.$ = window.jQuery = require('jquery')
 window.Tether = require('tether')
 window.Bootstrap = require('bootstrap')
+
+let webRoot = path.dirname(__dirname)
+window.view = require(path.join(webRoot, 'view.js'))
+window.model = require(path.join(webRoot, 'model.js'))
+window.model.db = path.join(app.getPath('userData'), 'example.db')
+window.form = require(path.join(webRoot, 'detail.js'))
+
+
 function hapus(id){
     console.log("hapus "+id)
     var jumlah_pengiriman = $('#jumlah_pengiriman').val()

@@ -33,6 +33,10 @@ $('body').html(dom)
 console.log("document inserted")
 $('document').ready(function () {
   window.model.getOrder()
+  var today = new Date()
+  var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()
+  console.log("today: "+date)
+  $('#date-today').html(date)
 })
 
 

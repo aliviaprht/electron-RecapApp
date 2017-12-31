@@ -85,7 +85,6 @@ module.exports.showModal1 = function (pid) {
     this.showPengiriman(rowKirim)
 
     //Get Tanggal
-    //belom pake if-if-an
     let date = model.getTanggal_ProsesbyID(pid)[0]
     $('#isiLKO').text(date.LKO)
     if (date.TUNGGU_KAIN != "") {

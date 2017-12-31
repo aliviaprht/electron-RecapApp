@@ -98,4 +98,5 @@ $('#modalNext button.btn-primary').click(function(){
   setTimeout(function() {
       $('#success-save').modal('hide');
   }, 2000);
-})
+});
+

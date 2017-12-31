@@ -34,9 +34,33 @@ console.log("document inserted")
 $('document').ready(function () {
   window.model.getOrder()
   var today = new Date()
-  var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()
+  var day,month = ''
+  switch(today.getDay()){
+    case 0: day = 'Senin'; break;
+    case 1: day = 'Selasa'; break;
+    case 2: day = 'Rabu'; break;
+    case 3: day = 'Kamis'; break;
+    case 4: day = 'Jumat'; break;
+    case 5: day = 'Sabtu'; break;
+    case 6: day = 'Minggu'; break;
+  }
+  switch(today.getMonth()){
+    case 0: month = 'Januari'; break;
+    case 1: month = 'Februari'; break;
+    case 2: month = 'Maret'; break;
+    case 3: month = 'April'; break;
+    case 4: month = 'Mei'; break;
+    case 5: month = 'Juni'; break;
+    case 6: month = 'Juli'; break;
+    case 7: month = 'Agustus'; break;
+    case 8: month = 'September'; break;
+    case 9: month = 'Oktober'; break;
+    case 10: month = 'November'; break;
+    case 11: month = 'Desember'; break;
+  }
+  var date = 'Tanggal: '+day+', '+today.getDate()+' '+month+' '+today.getFullYear()
   console.log("today: "+date)
-  $('#date-today').html(date)
+  $('#date_today').html(date)
 })
 
 
@@ -44,3 +68,34 @@ $('#new-order').click( function () {
     ipcRenderer.send('open-form');
     console.log("open-form")
 });
+$('#modalNext button.btn-primary').click(function(){
+  var id = this.id.split('_')[1]
+  var date = new Date()
+  var today = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear() 
+  console.log("click save to id="+id)
+  var order = window.model.getOrderbyID(id)[0]
+  var currentprocess = parseInt(order.proses)
+  console.log("current process:"+currentprocess)
+  var nextprocess = currentprocess+1
+  var proses =''
+    switch(nextprocess){
+      case 0: proses = 'LKO'; break;
+      case 1: proses = 'TUNGGU_KAIN'; break;
+      case 2: proses = 'POTONG'; break;
+      case 3: proses = 'FILM'; break;
+      case 4: proses = 'SABLON'; break;
+      case 5: proses = 'JAHIT'; break;
+      case 6: proses = 'PACKING'; break;
+      case 7: proses = 'BELUM_KIRIM'; break;
+      case 8: proses = 'SUDAH_KIRIM';
+    }
+  window.model.updateData("order","proses",nextprocess,"`id_order`="+id)
+  window.model.updateData("tanggal_proses",proses,today,"`id_order`="+id)
+  window.model.getOrder()
+  $('#modalNext').modal('hide')
+  $('#success-save').modal('show');
+
+  setTimeout(function() {
+      $('#success-save').modal('hide');
+  }, 2000);
+})

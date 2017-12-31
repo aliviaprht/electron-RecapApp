@@ -114,29 +114,6 @@ module.exports.getPengirimanbyID = function (pid) {
     }
 }
 
-//get jumlah_pengiriman
-module.exports.getJumlah_PengirimanbyID = function (pid) {
-    let db = SQL.dbOpen(window.model.db)
-    if (db !== null) {
-        let query = 'SELECT * FROM `jumlah_pengiriman` WHERE `id_pengiriman` IS ?'
-        let statement = db.prepare(query, [pid])
-        try {
-            if (statement.step()) {
-                let values = [statement.get()]
-                let columns = statement.getColumnNames()
-                return _rowsFromSqlDataObject({values: values, columns: columns})
-            } else {
-                console.log('model.getJumlah_Pengiriman', 'No data found for id_pengiriman =', pid)
-            }
-        } catch (error) {
-            console.log('model.getJumlah_Pengiriman', error.message)
-        } finally {
-            SQL.dbClose(db, window.model.db)
-        }
-    }
-}
-
-
 //get tanggal_proses by id
 module.exports.getTanggal_ProsesbyID = function (pid) {
     let db = SQL.dbOpen(window.model.db)

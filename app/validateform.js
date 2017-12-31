@@ -58,7 +58,7 @@ function submitForm(){
         var jumlah = getJumlahTotal(pengiriman,jumlah_pengiriman)
         //save order to database
         var id_order = saveOrder(kodeart,namaart,LKO,id_konsumen,jumlah)
-        var id_produk = saveProduk(id_order,produk,bahan,sablon)
+        var id_produk = saveProduk(id_order,produk,bahan,sablon,keterangan)
         saveLetakSablon(id_produk,letaksablon)
         saveWarna(id_produk,warna)
         savePengiriman(id_order,pengiriman)
@@ -74,7 +74,7 @@ function savePengiriman(id_order,pengiriman){
     for(idx in pengiriman){
         var keyValue= {columns:['id_order','urutan','status_pengiriman','size_2','size_4','size_6','size_8','size_10','size_12','size_XS','size_S','size_M','size_L','size_XL','size_3L','size_4L'],values:[]}
         keyValue.values.push(id_order)
-        keyValue.values.push(idx+1)
+        keyValue.values.push(parseInt(idx)+1)
         keyValue.values.push(0)
         for(size in pengiriman[idx]){
             keyValue.values.push(pengiriman[idx][size])
@@ -93,9 +93,9 @@ function saveLetakSablon(id_produk,letaksablon){
         model.saveFormData("letak_sablon",{columns:['id_produk','letak_sablon'],values:[id_produk,letaksablon[idx]]})
     }
 }
-function saveProduk(id_order,produk,bahan,sablon){
-    model.saveFormData("produk",{columns:['id_order','jenis_produk','jenis_bahan','jenis_sablon'],values:[id_order,produk,bahan,sablon]})
-    var result = model.getProdukIDbyOrder(id_order)[0].id_produk
+function saveProduk(id_order,produk,bahan,sablon,keterangan){
+    model.saveFormData("produk",{columns:['id_order','jenis_produk','jenis_bahan','jenis_sablon','keterangan'],values:[id_order,produk,bahan,sablon,keterangan]})
+    var result = model.getProdukbyID(id_order)[0].id_produk
     console.log("added id_produk :"+result)
     return result
 }

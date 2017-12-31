@@ -12,34 +12,34 @@
 }
 .col-process {
     float: left;
-    border: 1px solid white;
+    padding:0px;
     padding-bottom: 5px;
     text-align: center;
-    height: auto;
+    min-height: 500px;
     width :11%;
     min-width: 100px;
-}
-.table-container{
-    overflow: scroll;
+    border:1px solid rgb(190, 190, 190);
+    border-left:0.5px solid rgb(190, 190, 190);
+    border-right:0.5px solid rgb(190, 190, 190);
+    background-color: rgb(241, 241, 241);
 }
 
 .table-title {
-    background-color: aquamarine;
     text-align: center;
     height: 50px;
-    margin-bottom : 8px;
+    border-bottom:2px solid rgb(219, 219, 219);
+    margin:0px;
+    margin-bottom : 3px;
 }
 
 
 .box-process {
-    border: 1px solid rgb(158, 158, 158);
     text-align: center;
     font-size: 14px;
     height: auto;
-    width :100%;
-    padding: 2px;
+    width :97%;
     border-radius: 5%;
-    margin-bottom: 3px;
+    margin:2px;
 }
 
 .namaInfo {
@@ -62,4 +62,17 @@ button.next{
 .text-jumlah{
     padding:5px;
     margin-bottom :15px;
+}
+p {
+    margin :2px;
+    padding :0px;
+}
+#date_today{
+    margin-left :12px;
+}
+.success-save-text{
+    text-align: center;
+}
+h3{
+    margin-left:12px;
 }

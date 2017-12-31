@@ -125,6 +125,7 @@ module.exports.getOrder = function () {
     try {
       let row = db.exec(query)
       if (row !== undefined && row.length > 0) {
+        console.log("hasilgetorder:",row[0])
         row = _rowsFromSqlDataObject(row[0])
         view.showOrder(row)
       }
@@ -136,47 +137,48 @@ module.exports.getOrder = function () {
     }
   }
 }
-module.exports.getProdukIDbyOrder = function (pid) {
+
+//get produk by id
+module.exports.getProdukbyID = function (pid) {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
-    let query = 'SELECT * FROM `produk` WHERE `id_order` IS ?'
-    let statement = db.prepare(query, [pid])
-    try {
-      if (statement.step()) {
-        let values = [statement.get()]
-        let columns = statement.getColumnNames()
-        return _rowsFromSqlDataObject({values: values, columns: columns})
-      } else {
-        console.log('model.getProdukIDbyOrder', 'No data found for id_order =', pid)
+      let query = 'SELECT * FROM `produk` WHERE `id_order` IS ?'
+      let statement = db.prepare(query, [pid])
+      try {
+          if (statement.step()) {
+              let values = [statement.get()]
+              let columns = statement.getColumnNames()
+              return _rowsFromSqlDataObject({values: values, columns: columns})
+          } else {
+              console.log('model.getProduk', 'No data found for id_order =', pid)
+          }
+      } catch (error) {
+          console.log('model.getProduk', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
       }
-    } catch (error) {
-      console.log('model.getProdukIDbyOrder', error.message)
-    } finally {
-      SQL.dbClose(db, window.model.db)
-    }
   }
 }
-/*
-  Fetch a person's data from the database.
-*/
+
+//get order by id
 module.exports.getOrderbyID = function (pid) {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
-    let query = 'SELECT * FROM `order` NATURAL JOIN `konsumen` WHERE `id_order` IS ?'
-    let statement = db.prepare(query, [pid])
-    try {
-      if (statement.step()) {
-        let values = [statement.get()]
-        let columns = statement.getColumnNames()
-        return _rowsFromSqlDataObject({values: values, columns: columns})
-      } else {
-        console.log('model.getOrderbyID', 'No data found for id =', pid)
+      let query = 'SELECT * FROM `order` WHERE `id_order` IS ?'
+      let statement = db.prepare(query, [pid])
+      try {
+          if (statement.step()) {
+              let values = [statement.get()]
+              let columns = statement.getColumnNames()
+              return _rowsFromSqlDataObject({values: values, columns: columns})
+          } else {
+              console.log('model.getOrder', 'No data found for id_order =', pid)
+          }
+      } catch (error) {
+          console.log('model.getOrder', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
       }
-    } catch (error) {
-      console.log('model.getOrderbyID', error.message)
-    } finally {
-      SQL.dbClose(db, window.model.db)
-    }
   }
 }
 module.exports.getAllKonsumenColor = function () {
@@ -220,6 +222,27 @@ module.exports.getKonsumenbyName = function (nama) {
     }
   }
 }
+//get konsumen by id
+module.exports.getKonsumenbyID = function (pid) {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT * FROM `konsumen` WHERE `id_konsumen` IS ?'
+      let statement = db.prepare(query, [pid])
+      try {
+          if (statement.step()) {
+              let values = [statement.get()]
+              let columns = statement.getColumnNames()
+              return _rowsFromSqlDataObject({values: values, columns: columns})
+          } else {
+              console.log('model.getKonsumen', 'No data found for id_konsumen =', pid)
+          }
+      } catch (error) {
+          console.log('model.getKonsumen', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
 /*
   Fetch a person's data from the database.
 */
@@ -242,6 +265,133 @@ module.exports.getOrderbyArticle = function (code) {
       SQL.dbClose(db, window.model.db)
     }
   }
+}
+
+//get letak_sablon by id
+module.exports.getLetakSablonbyID = function (pid) {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT * FROM `letak_sablon` WHERE `id_produk` IS '+pid
+      try {
+        let row = db.exec(query)
+        if (row !== undefined && row.length > 0) {
+          row = _rowsFromSqlDataObject(row[0])
+          return row
+        } else {
+              console.log('model.getLetakSablon', 'No data found for id_produk =', pid)
+        }
+      } catch (error) {
+          console.log('model.getLetakSablon', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
+//get warna by id
+module.exports.getWarnabyID = function (pid) {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT * FROM `warna` WHERE `id_produk` IS '+pid
+      try {
+        let row = db.exec(query)
+        if (row !== undefined && row.length > 0) {
+          row = _rowsFromSqlDataObject(row[0])
+          return row
+        } else {
+              console.log('model.getWarna', 'No data found for id_produk =', pid)
+        }
+      } catch (error) {
+          console.log('model.getWarna', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
+//get pengiriman by id
+module.exports.getPengirimanbyID = function (pid) {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT * FROM `pengiriman` WHERE `id_order` IS '+pid+' ORDER BY `urutan` ASC'
+      try {
+        let row = db.exec(query)
+        if (row !== undefined && row.length > 0) {
+          row = _rowsFromSqlDataObject(row[0])
+          return row
+        } else {
+              console.log('model.getPengiriman', 'No data found for id_order =', pid)
+          }
+      } catch (error) {
+          console.log('model.getPengiriman', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
+//get tanggal_proses by id
+module.exports.getTanggal_ProsesbyID = function (pid) {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT * FROM `tanggal_proses` WHERE `id_order` IS ?'
+      let statement = db.prepare(query, [pid])
+      try {
+          if (statement.step()) {
+              let values = [statement.get()]
+              let columns = statement.getColumnNames()
+              return _rowsFromSqlDataObject({values: values, columns: columns})
+          } else {
+              console.log('model.getTanggal_Proses', 'No data found for id_order =', pid)
+          }
+      } catch (error) {
+          console.log('model.getTanggal_Proses', error.message)
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
+/*
+  Insert or update a order's data in the database.
+*/
+module.exports.saveFormData = function (tableName, keyValue, callback) {
+  if (keyValue.columns.length > 0) {
+    let db = SQL.dbOpen(window.model.db)
+    if (db !== null) {
+      let query = 'INSERT OR REPLACE INTO `' + tableName
+      query += '` (`' + keyValue.columns.join('`, `') + '`)'
+      query += ' VALUES (' + _placeHoldersString(keyValue.values.length) + ')'
+      console.log(query)
+      let statement = db.prepare(query)
+      try {
+        if (statement.run(keyValue.values)) {
+          console.log("model.saveFormData to ",tableName)
+        } else {
+          console.log('model.saveFormData', 'Query failed for', keyValue.values)
+        }
+      } catch (error) {
+        console.log('model.saveFormData', error.message)
+      } finally {
+        SQL.dbClose(db, window.model.db)
+      }
+    }
+  }
+}
+module.exports.updateData = function(tablename,column,value,condition){
+    let db = SQL.dbOpen(window.model.db)
+    if (db !== null) {
+      let query = 'UPDATE `' + tablename +'` SET `'+column+'`='+value+' WHERE '+condition
+      console.log(query)
+      let statement = db.prepare(query)
+      try {
+        if (statement.run()) {
+          console.log("model.updateData to ",tablename)
+        } else {
+          console.log('model.updateData', 'Query failed')
+        }
+      } catch (error) {
+        console.log("model.updateData", error.message)
+      } finally {
+        SQL.dbClose(db, window.model.db)
+      }
+    }
 }
 module.exports.deleteOrderbyID = function (id, callback) {
   let db = SQL.dbOpen(window.model.db)
@@ -280,33 +430,6 @@ module.exports.deleteOrderbyArticle = function (code, callback) {
       console.log('model.deletePerson', error.message)
     } finally {
       SQL.dbClose(db, window.model.db)
-    }
-  }
-}
-
-/*
-  Insert or update a order's data in the database.
-*/
-module.exports.saveFormData = function (tableName, keyValue, callback) {
-  if (keyValue.columns.length > 0) {
-    let db = SQL.dbOpen(window.model.db)
-    if (db !== null) {
-      let query = 'INSERT OR REPLACE INTO `' + tableName
-      query += '` (`' + keyValue.columns.join('`, `') + '`)'
-      query += ' VALUES (' + _placeHoldersString(keyValue.values.length) + ')'
-      console.log(query)
-      let statement = db.prepare(query)
-      try {
-        if (statement.run(keyValue.values)) {
-          console.log("model.saveFormData to ",tableName)
-        } else {
-          console.log('model.saveFormData', 'Query failed for', keyValue.values)
-        }
-      } catch (error) {
-        console.log('model.saveFormData', error.message)
-      } finally {
-        SQL.dbClose(db, window.model.db)
-      }
     }
   }
 }

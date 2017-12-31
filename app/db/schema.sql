@@ -12,7 +12,8 @@ CREATE TABLE "produk" (
      "id_order" INTEGER NOT NULL,
      "jenis_produk" TEXT NOT NULL,
      "jenis_bahan" TEXT NOT NULL,
-     "jenis_sablon" TEXT
+     "jenis_sablon" TEXT,
+     "keterangan" TEXT
 );
 CREATE TABLE "letak_sablon" (
      "id_letak_sablon" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,

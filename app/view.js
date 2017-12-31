@@ -1,20 +1,28 @@
 'use strict'
 const path = require('path')
 const model = require(path.join(__dirname, 'model.js'))
-const detail = require(path.join(__dirname, 'detail.js'))
 
 module.exports.showOrder = function (rowsObject) {
   console.log("show order")
-  let markup = ''
+  $('#LKO').html('<p class="table-title font-weight-bold">LKO</p>')
+  $('#TUNGGU_KAIN').html('<p class="table-title font-weight-bold">TUNGGU KAIN</p>')
+  $('#POTONG').html('<p class="table-title font-weight-bold">POTONG</p>')
+  $('#FILM').html('<p class="table-title font-weight-bold">FILM</p>')
+  $('#SABLON').html('<p class="table-title font-weight-bold">SABLON</p>')
+  $('#JAHIT').html('<p class="table-title font-weight-bold">JAHIT</p>')
+  $('#PACKING').html('<p class="table-title font-weight-bold">PACKING</p>')
+  $('#BELUM_KIRIM').html('<p class="table-title font-weight-bold">BELUM KIRIM</p>')
+  $('#SUDAH_KIRIM').html('<p class="table-title font-weight-bold">SUDAH KIRIM</p>')
   for (let rowId in rowsObject) {
+    let markup = ''
     let row = rowsObject[rowId]
     markup += '<div class="box-process" style="background:'+row.warna+'">' +
               '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
               '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
-              '<button type="button" class="btn btn-primary btn-sm detail" data-toggle="modal" data-target="#modalSeeDetails">'+
+              '<button type="button" class="btn btn-primary btn-sm detail" id="detail_'+row.id_order+'">'+
                   'Details' +
               '</button>' +
-              '<button type="button" class="btn btn-success btn-sm next" data-toggle="modal" data-target="#modalNext">' +
+              '<button type="button" class="btn btn-success btn-sm next" id="next_'+row.id_order+'">' +
                   'Next' +
               '</button>'+
               '</div>'
@@ -34,48 +42,51 @@ module.exports.showOrder = function (rowsObject) {
   }
   $('#order-list button.detail').each(function (idx, obj) {
     $(obj).on('click', function () {
-      window.view.showModal1(this.id)
+      console.log("detail id="+this.id.split('_')[1])
+      window.view.showModal1(this.id.split('_')[1])
     })
   })
   $('#order-list button.next').each(function (idx, obj) {
     $(obj).on('click', function () {
-      window.view.showModal2(this.id)
+      console.log("next id="+this.id.split('_')[1])
+      window.view.showModal2(this.id.split('_')[1])
     })
   })
 }
 
 module.exports.showModal1 = function (pid) {
     //Get Order
-    let rowOrder = detail.getOrderbyID(pid)
+    let rowOrder = model.getOrderbyID(pid)
     $('#isiKodeArt').text(rowOrder[0].kode_artikel)
     $('#isiNamaArt').text(rowOrder[0].nama_artikel)
     $('#isiNoLKO').text(rowOrder[0].no_lko)
 
     //Get Produk
-    let rowProduk = detail.getProdukbyID(pid)
+    let rowProduk = model.getProdukbyID(pid)
     $('#isiJenisProduk').text(rowProduk[0].jenis_produk)
     $('#isiJenisBahan').text(rowProduk[0].jenis_bahan)
     $('#isiJenisSablon').text(rowProduk[0].jenis_sablon)
+    $('#isiKeterangan').text(rowProduk[0].keterangan)
 
     //Get Letak Sablom
-    let rowLetakSablon = detail.getLetakSablonbyID(rowProduk.id_produk)
+    let rowLetakSablon = model.getLetakSablonbyID(rowProduk[0].id_produk)
     this.showLetakSablon(rowLetakSablon);
 
     //Get Warna
-    let rowWarna = detail.getWarnabyID(rowProduk.id_produk)
+    let rowWarna = model.getWarnabyID(rowProduk[0].id_produk)
     this.showWarna(rowWarna);
 
     //Get Konsumen
-    let rowKons = detail.getKonsumenbyID(rowOrder.id_konsumen)[0]
-    $('#isiNamaKonsumen').text(rowKons.nama_konsumen)
+    let rowKons = model.getKonsumenbyID(rowOrder[0].id_konsumen)
+    $('#isiNamaKonsumen').text(rowKons[0].nama_konsumen)
 
     //Get Pengiriman
-    let rowKirim = detail.getPengirimanbyID(pid)
-    this.showWarna(rowKirim)
+    let rowKirim = model.getPengirimanbyID(pid)
+    this.showPengiriman(rowKirim)
 
     //Get Tanggal
     //belom pake if-if-an
-    let date = detail.getTanggal_ProsesbyID(pid)[0]
+    let date = model.getTanggal_ProsesbyID(pid)[0]
     $('#isiLKO').text(date.LKO)
     if (date.TUNGGU_KAIN != "") {
         $('#isiTungguKain').text(date.TUNGGU_KAIN)
@@ -101,33 +112,36 @@ module.exports.showModal1 = function (pid) {
     if (date.SUDAH_KIRIM != "") {
         $('#isiSudahKirim').text(date.SUDAH_KIRIM)
     }
+    $('#modalSeeDetails').modal('show')
 }
 
 module.exports.showWarna = function (rowsObject) {
+    $('#isiWarnaBahan').html('')
     let markup = ''
     for (let rowId in rowsObject) {
         let row = rowsObject[rowId]
         markup += '<li>' + row.warna_bahan + '</li>'
-        $('#isiWarnaBahan').append(markup)
     }
+    $('#isiWarnaBahan').append(markup)
 }
 
 module.exports.showLetakSablon = function (rowsObject) {
+    $('#isiLetakSablon').html('')
     let markup = ''
     for (let rowId in rowsObject) {
         let row = rowsObject[rowId]
-        markup += '<li>' + row.warna_bahan + '</li>'
-        $('#isiLetakSablon').append(markup)
+        markup += '<li>' + row.letak_sablon + '</li>'
     }
+    $('#isiLetakSablon').append(markup)
 }
 
 module.exports.showPengiriman = function (rowsObject) {
+    $('#isiKirim').html('')
     let markup =''
     for (let rowId in rowsObject) {
-        let rowPengiriman = detail.getJumlah_PengirimanbyID(rowsObject[rowId].id_pengiriman)
-        let urutan = rowsObject[rowId].urutan
-            markup += '<div class="row"> <span class="font-weight-bold namaInfo">Pengiriman - ' +
-                '</span><span>' + urutan + '</span></div> <div class="row"> <div class="col-4"> ' +
+        let rowPengiriman = rowsObject[rowId]
+        let urutan = rowPengiriman.urutan
+            markup += '<div class="row"> <div class="col-6 font-weight-bold namaInfo" style="margin-top:10px;">  Pengiriman-'+ urutan + '</div></div> <div class="row"> <div class="col-4"> ' +
                 '<span class="font-weight-bold namaInfo">Uk. 2  : </span> <span>' + rowPengiriman.size_2 +
                 '</span> </div> <div class="col-4"> <span class="font-weight-bold namaInfo">Uk. 12 : </span> ' +
                 '<span>' + rowPengiriman.size_12 + '</span> </div> <div class="col-4"> <span class="font-weight-bold' +
@@ -147,11 +161,10 @@ module.exports.showPengiriman = function (rowsObject) {
                 'namaInfo">Uk. 4L : </span> <span>'+ rowPengiriman.size_4L +'</span> </div> </div> <div class="row"> ' +
                 '<div class="col-4"> <span class="font-weight-bold namaInfo">Uk. 10 : </span> ' +
                 '<span>'+ rowPengiriman.size_10 +'</span> </div> </div>'
-
-        $('#isiKirim').append(markup)
     }
-
+    $('#isiKirim').append(markup)
 }
-module.exports.showModal2 = function (e) {
-  
+module.exports.showModal2 = function (id) {
+  $('#modalNext button.btn-primary').attr('id','save-next_'+id)
+  $('#modalNext').modal('show')
 }

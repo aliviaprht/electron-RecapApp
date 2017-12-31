@@ -13,12 +13,20 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" id="save-next">Save changes</button>
             </div>
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="success-save" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body success-save-text">
+                Success!!
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="modalSeeDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -32,172 +40,92 @@
             <div class="modal-body">
                 <h6>Detail Pesanan</h6>
                 <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Kode Artikel: </p>
-                        <p id="isiKodeArt">*ini kode art nya*</p>
+                    <div class="col-4">
+                        <div class="font-weight-bold namaInfo">Kode Artikel </div>
+                        <div class="font-weight-bold namaInfo">No LKO </div>
+                        <div class="font-weight-bold namaInfo">Nama Artikel </div>
+                        <div class="font-weight-bold namaInfo">Jenis Produk </div>
+                        <div class="font-weight-bold namaInfo">Nama Konsumen </div>
+                        <div class="font-weight-bold namaInfo">Jenis Bahan </div>
+                        <div class="font-weight-bold namaInfo">Jenis Sablon </div>
+                        <div class="font-weight-bold namaInfo">Keterangan </div>
+                    </div>
+                    <div class="col-1">
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
                     </div>
                     <div class="col-6">
-                        <p class="font-weight-bold namaInfo">No LKO: </p>
-                        <p id="isiNoLKO">*ini No LKO nya*</p>
+                        <div id="isiKodeArt">*ini kode art nya*</div>
+                        <div id="isiNoLKO">*ini No LKO nya*</div>
+                        <div id="isiNamaArt">*ini nama art nya*</div>
+                        <div id="isiJenisProduk">*ini Jenis Produk nya*</div>
+                        <div id="isiNamaKonsumen">*ini nama konsumen nya*</div>
+                        <div id="isiJenisBahan">*ini Jenis Bahan nya*</div>
+                        <div id="isiJenisSablon">*ini jenis sablon nya*</div>
+                        <div id="isiKet">*ini Keterangan nya*</div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Nama Artikel: </p>
-                        <p id="isiNamaArt">*ini nama art nya*</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Jenis Produk: </p>
-                        <p id="isiJenisProduk">*ini Jenis Produk nya*</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Nama Konsumen: </p>
-                        <p id="isiNamaKonsumen">*ini nama konsumen nya*</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Jenis Bahan: </p>
-                        <p id="isiJenisBahan">*ini Jenis Bahan nya*</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Warna Bahan: </p>
+                        <div class="font-weight-bold namaInfo">Warna Bahan: </div>
                         <ul id="isiWarnaBahan">*ini warna bahan nya*</ul>
                     </div>
                     <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Letak Sablon: </p>
+                        <div class="font-weight-bold namaInfo">Letak Sablon: </div>
                         <ul id="isiLetakSablon">*ini Letak Sablon nya*</ul>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Jenis Sablon: </p>
-                        <p id="isiJenisSablon">*ini jenis sablon nya*</p>
                     </div>
                     <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Keterangan: </p>
-                        <p id="isiKet">*ini Keterangan nya*</p>
                     </div>
                 </div>
                 <br>
                 <h6>Detail Pengiriman</h6>
                 <div id="isiKirim"></div>
-                <div class="row">
-                    <span class="font-weight-bold namaInfo">Pengiriman - </span>
-                    <span>1</span>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 2  : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 12 : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. L  : </span>
-                        <span>1</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 4  : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. XS : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. XL : </span>
-                        <span>1</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 6  : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. S  : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 3L : </span>
-                        <span>1</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 8  : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. M  : </span>
-                        <span>1</span>
-                    </div>
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 4L : </span>
-                        <span>1</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-4">
-                        <span class="font-weight-bold namaInfo">Uk. 10 : </span>
-                        <span>1</span>
-                    </div>
-                </div>
                 <br>
                 <h6>Detail Tanggal Pesanan</h6>
                 <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal LKO: </p>
-                        <p id="isiLKO">*ini tanggalnya*</p>
+                    <div class="col-4">
+                        <div class="font-weight-bold namaInfo">LKO </div>
+                        <div class="font-weight-bold namaInfo">Tungu Kain </div>
+                        <div class="font-weight-bold namaInfo">Potong </div>
+                        <div class="font-weight-bold namaInfo">Film</div>
+                        <div class="font-weight-bold namaInfo">Sablon </div>
+                        <div class="font-weight-bold namaInfo">Jahit </div>
+                        <div class="font-weight-bold namaInfo">Packing</div>
+                        <div class="font-weight-bold namaInfo">Belum Kirim </div>
+                        <div class="font-weight-bold namaInfo">Sudah Kirim </div>
                     </div>
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Tunggu Kain: </p>
-                        <p id="isiTungguKain">*ini tanggalnya*</p>
+                    <div class="col-1">
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
+                        <div class="font-weight-bold namaInfo">: </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Potong: </p>
-                        <p id="isiPotong">*ini tanggalnya*</p>
+                    <div class="col-7">
+                        <div id="isiLKO">*ini tanggalnya*</div>
+                        <div id="isiTungguKain">*ini tanggalnya*</div>
+                        <div id="isiPotong">*ini tanggalnya*</div>
+                        <div id="isiFilm">*ini tanggalnya*</div>
+                        <div id="isiSablon">*ini tanggalnya*</div>
+                        <div id="isiJahit">*ini tanggalnya*</div>
+                        <div id="isiPacking">*ini tanggalnya*</div>
+                        <div id="isiBelumKirim">*ini tanggalnya*</div>
+                        <div id="isiSudahKirim">*ini tanggalnya*</div>
                     </div>
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Film: </p>
-                        <p id="isiFilm">*ini tanggalnya*</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Sablon: </p>
-                        <p id="isiSablon">*ini tanggalnya*</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Jahit: </p>
-                        <p id="isiJahit">*ini tanggalnya*</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Packing: </p>
-                        <p id="isiPacking">*ini tanggalnya*</p>
-                    </div>
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Belum Kirim: </p>
-                        <p id="isiBelumKirim">*ini tanggalnya*</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-6">
-                        <p class="font-weight-bold namaInfo">Tanggal Sudah Kirim: </p>
-                        <p id="isiSudahKirim">*ini tanggalnya*</p>
-                    </div>
-                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

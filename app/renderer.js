@@ -36,13 +36,13 @@ $('document').ready(function () {
   var today = new Date()
   var day,month = ''
   switch(today.getDay()){
-    case 0: day = 'Senin'; break;
-    case 1: day = 'Selasa'; break;
-    case 2: day = 'Rabu'; break;
-    case 3: day = 'Kamis'; break;
-    case 4: day = 'Jumat'; break;
-    case 5: day = 'Sabtu'; break;
-    case 6: day = 'Minggu'; break;
+    case 1: day = 'Senin'; break;
+    case 2: day = 'Selasa'; break;
+    case 3: day = 'Rabu'; break;
+    case 4: day = 'Kamis'; break;
+    case 5: day = 'Jumat'; break;
+    case 6: day = 'Sabtu'; break;
+    case 0: day = 'Minggu'; break;
   }
   switch(today.getMonth()){
     case 0: month = 'Januari'; break;
@@ -68,6 +68,12 @@ $('#new-order').click( function () {
     ipcRenderer.send('open-form');
     console.log("open-form")
 });
+
+$('#search-item').click( function () {
+    ipcRenderer.send('search-item');
+    console.log("open-search-item")
+})
+
 $('#modalNext button.btn-primary').click(function(){
   var id = this.id.split('_')[1]
   var date = new Date()
@@ -115,5 +121,10 @@ $('#close-submit').click()
 
 ipcRenderer.on('close-form-submit',(event,arg)=>{
   console.log('close-form-submit')
+  window.model.getOrder()
+})
+
+ipcRenderer.on('exit-search', (event,arg)=>{
+  console.log('exit-search')
   window.model.getOrder()
 })

@@ -68,6 +68,18 @@ function createAddWindow(){
   });
 }
 
+// Handle search item window
+function createSearchWindow(){
+  formWindow = new BrowserWindow({
+      title: 'Search Order'
+  });
+    formWindow.loadURL(`file://${__dirname}/app/html/searchItem.html`)
+    // Handle garbage collection
+    formWindow.on('close', function(){
+        formWindow = null;
+    });
+}
+
 // Catch open-form
 ipcMain.on('open-form', (event, arg)=> {
   if(formWindow==null){
@@ -85,4 +97,16 @@ ipcMain.on('close-form-submit', (event, arg)=> {
     mainWindow.webContents.send('close-form-submit')
     formWindow.close()
   }
+})
+// Catch search-item
+ipcMain.on('search-item', (event,arg)=> {
+  if (formWindow!=null){
+    createSearchWindow()
+  }
+})
+// Catch exit-search
+ipcMain.on('exit-search', (event, arg)=> {
+    if(formWindow!=null){
+        formWindow.close()
+    }
 })

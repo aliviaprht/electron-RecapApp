@@ -16,112 +16,6 @@ window.model = require(path.join(webRoot, 'model.js'))
 window.model.db = path.join(app.getPath('userData'), 'example.db')
 window.form = require(path.join(webRoot, 'detail.js'))
 
-
-function hapus(id){
-    console.log("hapus "+id)
-    var jumlah_pengiriman = $('#jumlah_pengiriman').val()
-    var jumlah_pengiriman_baru = parseInt(jumlah_pengiriman)-1
-    $('#jumlah_pengiriman').val(jumlah_pengiriman_baru)
-    $('#pengiriman_'+jumlah_pengiriman).remove()
-    $('#hapus_pengiriman_'+jumlah_pengiriman_baru).show()
-}
-function hapus_warna(id){
-    console.log("hapus warna "+id)
-    var jumlah_warna = $('#jumlah_warna').val()
-    console.log(jumlah_warna)
-    var jumlah_warna_baru = parseInt(jumlah_warna)-1
-    $('#jumlah_warna').val(jumlah_warna_baru)
-    $('#warna_bahan_'+jumlah_warna).remove()
-    $('#hapus_warna_'+jumlah_warna_baru).show()
-}
-
-$('#close-submit').click(function(){
-    ipcRenderer.send('close-form-submit')
-})
-
-$(document).ready(function(){
-    let allkode = window.model.getAllKodeArtikel()
-    $('#inputKodeArt').keyup(function(idx,obj){
-        let value = $.trim(this.value)
-        if(value!=''){
-            let kodeart_state = true
-            for(let i in allkode){
-                let kode = allkode[i]
-                if(kode.kode_artikel==value){
-                    kodeart_state = false;
-                }
-            }
-            console.log('kode artikel :'+kodeart_state)
-            sendValidation('inputKodeArt','Kode Artikel telah dipakai sebelumnya',kodeart_state)
-        }else{
-            removeValidationAttr('inputKodeArt')
-        }
-    });
-    let allLKO = window.model.getAllNoLKO()
-    $('#inputNoLKO').keyup(function(){
-        let value = $.trim(this.value)
-        if(value!=''){
-            let LKO_state = true
-            for(let i in allLKO){
-                let LKO = allLKO[i]
-                if(LKO.no_lko==value){
-                    LKO_state = false;
-                }
-            }
-            console.log('lko :'+LKO_state)
-            sendValidation('inputNoLKO','Nomor LKO telah dipakai sebelumnya',LKO_state)
-        }else{
-            removeValidationAttr('inputNoLKO')
-        }
-    });
-    let allKonsumen = window.model.getAllKonsumen()
-    $('#inputNamaKonsumen').keyup(function(){
-        let value = $.trim(this.value)
-        if(value!=''){
-            let exist = false
-            for(let i in allKonsumen){
-                let konsumen = allKonsumen[i]
-                if(konsumen.nama_konsumen==value){
-                    exist = true;
-                }
-            }
-            console.log('nama konsumen exist:'+exist)
-            let message = ''
-            if(exist){
-                message ='Nama konsumen pernah melakukan order'
-            }else{
-                message ='Nama konsumen belum terdata sebelumnya'
-            }
-            $('#message_inputNamaKonsumen').html(message)
-        }else{
-            $('#message_inputNamaKonsumen').html('')
-        }
-    });
-
-})
-function removeValidationAttr(idInput){
-    $('#'+idInput).removeClass('has-error')
-    $('#'+idInput+'_label').removeClass('has-error')
-    $('#'+idInput).removeClass('has-success')
-    $('#'+idInput+'_label').removeClass('has-success')
-}
-function sendValidation(idInput,message,state){
-    if(state){
-        $('#'+idInput).removeClass('has-error')
-        $('#'+idInput+'_label').removeClass('has-error')
-        $('#'+idInput).addClass('has-success')
-        $('#'+idInput+'_label').addClass('has-success')
-        $('#error_'+idInput).html('')
-        $('#success_'+idInput).html(message)
-    }else{
-        $('#'+idInput).removeClass('has-success')
-        $('#'+idInput+'_label').removeClass('has-success')
-        $('#'+idInput).addClass('has-error')
-        $('#'+idInput+'_label').addClass('has-error')
-        $('#error_'+idInput).html(message)
-    }
-
-}
 // Example starter JavaScript for disabling form submissions if there are invalid fields
 function getRandomColor() {
     var allcolor = model.getAllKonsumen()
@@ -147,20 +41,14 @@ function getRandomColor() {
     }
     return color
   }
+
 function submitForm(){
-    var form = document.getElementById('orderForm');
-    if (form.checkValidity() === false) {
-        event.preventDefault();
-        event.stopPropagation();
-        console.log("not valid")
-    }
-    form.classList.add('was-validated');
-    if((form.checkValidity())){
-        var kodeart = $('#inputKodeArt').val()
-        var LKO = $('#inputNoLKO').val()
-        var namaart = $('#inputNamaArt').val()
-        var produk = $('#inputJenisProduct').val()
-        var konsumen = $('#inputNamaKonsumen').val()
+    if((checkValidity())){
+        var kodeart = $.trim($('#inputKodeArt').val())
+        var LKO = $.trim($('#inputNoLKO').val())
+        var namaart = $.trim($('#inputNamaArt').val())
+        var produk = $.trim($('#inputJenisProduct').val())
+        var konsumen = $.trim($('#inputNamaKonsumen').val())
         var bahan = $('#inputJenisBahan option:selected').val()
         var sablon = $('#inputJenisSablon option:selected').val()
         var letaksablon = [];
@@ -263,132 +151,113 @@ function getPengiriman(){
     var det_pengiriman = []
     var jumlah_pengiriman = parseInt($('#jumlah_pengiriman').val())
         for(let i=1;i<=jumlah_pengiriman;i++){
+            let allnil = true
             det_pengiriman =[]
             value = 0;
             if($('#input2_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input2_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#input4_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input4_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#input6_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input6_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#input8_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input8_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#input10_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input10_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#input12_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input12_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#inputXS_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#inputXS_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#inputS_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#inputS_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#inputM_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#inputM_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#inputL_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#inputL_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#inputXL_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#inputXL_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#input3L_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input3L_'+i).val())
             }
             det_pengiriman.push(value)
             value = 0;
             if($('#input4L_'+i).val()!=""){
+                allnil=false;
                 value = parseInt($('#input4L_'+i).val())
             }
             det_pengiriman.push(value)
-            pengiriman.push(det_pengiriman)
+            if(!allnil){
+                pengiriman.push(det_pengiriman)
+            }else{
+                console.log('allnil idx:'+i)
+            }
         }
     return pengiriman
 }
-function checkAllInput() {
-    var kodeart = document.orderForm.inputKodeArt;
-    var noLKO = document.orderForm.inputNoLKO;
-    var namaArtikel = document.orderForm.inputNamaArt;
-    var namaKonsumen = document.orderForm.inputNamaKonsumen;
-    var jenisProduct = document.orderForm.inputJenisProduct;
-    var checkkodeart = true;
-    var checklko = true;
-    var checkartikel = true;
-    var checkkonsumen = true;
-    var checkproduct = true;
-    //Check Kode Artikel
-    if(kodeart.value != "") {
-        var regex = /^(\w{2}-\d{6}-\w+)$/;
-        if (regex.test(kodeart.value) === false) {
-            alert ("Format Kode Artikel salah. Ikutin contoh format berikut ini 'CM-111217-IBUSUSI001'")
-            checkkodeart = false
-        }
-    }
 
-    //Check Nomer LKO
-    if (noLKO.value != "") {
-        var regex = /^(\w{2}-\d{5}-\w+)$/;
-        if (regex.test(noLKO.value) === false) {
-            alert ("Format No.LKO salah. Ikuti contoh format berikut ini 'KP-14874-XVII'")
-            checklko=false
-        }
-    }
-
-    //Check Nama Artikel
-    if (namaArtikel.value != "") {
-        var regex = /^[a-zA-Z0-9\s]+$/;
-        if (regex.test(namaArtikel.value) === false) {
-            alert ("Nama Artikel tidak valid")
-            checkartikel = false
-        }
-    }
-
-    //Check Nama Konsumen
-    if (namaKonsumen.value != "") {
-        var regex = /^[a-zA-Z0-9\s]+$/;
-        if (regex.test(namaKonsumen.value) === false) {
-            alert ("Nama Konsumen tidak valid")
-            checkkonsumen = false
-        }
-    }
-
-    //Check Jenis Product
-    if (jenisProduct.value != "") {
-        var regex = /^[a-zA-Z\s]+$/;
-        if (regex.test(jenisProduct.value) === false) {
-            alert ("Jenis Produk tidak valid")
-            checkproduct=false
-        }
-    }
-    return (checkartikel&&checkkodeart&&checkkonsumen&&checklko&&checkproduct)
-
-
+function hapus(id){
+    console.log("hapus "+id)
+    var jumlah_pengiriman = $('#jumlah_pengiriman').val()
+    var jumlah_pengiriman_baru = parseInt(jumlah_pengiriman)-1
+    $('#jumlah_pengiriman').val(jumlah_pengiriman_baru)
+    $('#pengiriman_'+jumlah_pengiriman).remove()
+    $('#hapus_pengiriman_'+jumlah_pengiriman_baru).show()
 }
+function hapus_warna(id){
+    console.log("hapus warna "+id)
+    var jumlah_warna = $('#jumlah_warna').val()
+    console.log(jumlah_warna)
+    var jumlah_warna_baru = parseInt(jumlah_warna)-1
+    $('#jumlah_warna').val(jumlah_warna_baru)
+    $('#warna_bahan_'+jumlah_warna).remove()
+    $('#hapus_warna_'+jumlah_warna_baru).show()
+}
+
+$('#close-submit').click(function(){
+    ipcRenderer.send('close-form-submit')
+})

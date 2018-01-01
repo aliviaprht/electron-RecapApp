@@ -33,64 +33,64 @@ $('#tambah_pengiriman').click(function(){
                 "<div class='form-size'>" +
                 "<div class='tag-ukuran'> Ukuran 2 </div>" +
                 " : " +
-                "<input type='text' class='form-control-sm inputUkuran' id='input2_"+jumlah_pengiriman_baru +"' input>" +
+                "<input type='text' class='form-control-sm inputUkuran' onkeyup='return checkukuran(this.id)' id='input2_"+jumlah_pengiriman_baru +"' input>" +
                 "</div>" +
                 "<div class='form-size'>" +
                 "<div class='tag-ukuran'> Ukuran 4 </div>" +
                 " : " +
-                "<input type='text' class='form-control-sm inputUkuran' id='input4_"+jumlah_pengiriman_baru+"' input>" +
+                "<input type='text' class='form-control-sm inputUkuran' onkeyup='return checkukuran(this.id)' id='input4_"+jumlah_pengiriman_baru+"' input>" +
                 "</div>" +
                 "<div class='form-size'>" +
                 "<div class='tag-ukuran'> Ukuran 6 </div>" +
                 " : " +
-                "<input type='text' class='form-control-sm inputUkuran' id='input6_"+jumlah_pengiriman_baru+"' input>" +
+                "<input type='text' class='form-control-sm inputUkuran' onkeyup='return checkukuran(this.id)' id='input6_"+jumlah_pengiriman_baru+"' input>" +
                 '</div>' +
                 '<div class="form-size">' +
                     '<div class="tag-ukuran"> Ukuran 8 </div>' +
                     ' : ' +
-                    '<input type="text" class="form-control-sm inputUkuran" id="input8_'+jumlah_pengiriman_baru+'" input>' +
+                    '<input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input8_'+jumlah_pengiriman_baru+'" input>' +
                 '</div>' +
                 '<div class="form-size">' +
                     '<div class="tag-ukuran"> Ukuran 10 </div>' +
                     ' : ' +
-                    '<input type="text" class="form-control-sm inputUkuran" id="input10_'+jumlah_pengiriman_baru+'" input>' +
+                    '<input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input10_'+jumlah_pengiriman_baru+'" input>' +
                 '</div>' +
                 '<div class="form-size">'+
                     '<div class="tag-ukuran"> Ukuran 12 </div>' +
                     ' : ' +
-                    '<input type="text" class="form-control-sm inputUkuran" id="input12_'+jumlah_pengiriman_baru+'" input>' +
+                    '<input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input12_'+jumlah_pengiriman_baru+'" input>' +
                 "</div>" +
                 "</div>" ;
     var col2 =  "<div class='col-size'>" +
                 "<div class='form-size'>" +
                 "<div class='tag-ukuran'> Ukuran XS </div>" +
                 " : " +
-                "<input type='text' class='form-control-sm inputUkuran' id='inputXS_"+jumlah_pengiriman_baru +"' input>" +
+                "<input type='text' class='form-control-sm inputUkuran' onkeyup='return checkukuran(this.id)' id='inputXS_"+jumlah_pengiriman_baru +"' input>" +
                 "</div>" +
                 "<div class='form-size'>" +
                 "<div class='tag-ukuran'> Ukuran S </div>" +
                 " : " +
-                "<input type='text' class='form-control-sm inputUkuran' id='inputS_"+jumlah_pengiriman_baru+"' input>" +
+                "<input type='text' class='form-control-sm inputUkuran' onkeyup='return checkukuran(this.id)' id='inputS_"+jumlah_pengiriman_baru+"' input>" +
                 "</div>" +
                 "<div class='form-size'>" +
                 "<div class='tag-ukuran'> Ukuran M </div>" +
                 " : " +
-                "<input type='text' class='form-control-sm inputUkuran' id='inputM_"+jumlah_pengiriman_baru+"' input>" +
+                "<input type='text' class='form-control-sm inputUkuran' onkeyup='return checkukuran(this.id)' id='inputM_"+jumlah_pengiriman_baru+"' input>" +
                 '</div>' +
                 '<div class="form-size">' +
                     '<div class="tag-ukuran"> Ukuran L </div>' +
                     ' : ' +
-                    '<input type="text" class="form-control-sm inputUkuran" id="inputL_'+jumlah_pengiriman_baru+'" input>' +
+                    '<input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="inputL_'+jumlah_pengiriman_baru+'" input>' +
                 '</div>' +
                 '<div class="form-size">' +
                     '<div class="tag-ukuran"> Ukuran XL </div>' +
                     ' : ' +
-                    '<input type="text" class="form-control-sm inputUkuran" id="inputXL_'+jumlah_pengiriman_baru+'" input>' +
+                    '<input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="inputXL_'+jumlah_pengiriman_baru+'" input>' +
                 '</div>' +
                 '<div class="form-size">'+
                     '<div class="tag-ukuran"> Ukuran 3L </div>' +
                     ' : ' +
-                    '<input type="text" class="form-control-sm inputUkuran" id="input3L_'+jumlah_pengiriman_baru+'" input>' +
+                    '<input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input3L_'+jumlah_pengiriman_baru+'" input>' +
                 "</div>" +
                 "</div>" ;
     var col3 =  "<div class='col-size'>" +
@@ -112,8 +112,8 @@ $('#tambah_warna').click(function(){
     $('#jumlah_warna').val(jumlah_warna_baru)
     $('#hapus_warna_'+jumlah_warna).hide()
     var opsi = '<div class="row" id="warna_bahan_'+jumlah_warna_baru+'">' +
-                '<label>Warna Bahan '+jumlah_warna_baru+' : '+
-                '<select  id="inputWarnaBahan_'+jumlah_warna_baru+'"  required>"'+
+                '<label class="col-3" id="inputWarnaBahan_'+jumlah_warna_baru+'_label">Warna Bahan '+jumlah_warna_baru+' </label>'+
+                '<select type="text" class="form-control col-5" id="inputWarnaBahan_'+jumlah_warna_baru+'" name="inputWarnaBahan" onclick="return checkwarna(this.id)" required>"'+
                 '<option value="" selected>Choose...</option>' +
                 '<option value="Abu MD1">Abu MD1</option>' +
                 '<option value="Abu MD2">Abu MD2</option>' +
@@ -169,10 +169,8 @@ $('#tambah_warna').click(function(){
                 '<option value="Ungu Tua">Ungu Tua</option>'+
                 '<option value="Ungu Tua SPC">Ungu Tua SPC</option>'+
                 '</select>'+
-                "<a class='btn btn-danger' id='hapus_warna_"+jumlah_warna_baru+"' onclick='hapus_warna(this.id)'>hapus</a>"+
-                '</label>'+
-                '<div class="invalid-feedback">'+
-                'Please insert "Warna Bahan"'+
+                "<a class='btn btn-danger hapus' id='hapus_warna_"+jumlah_warna_baru+"' onclick='hapus_warna(this.id)'>hapus</a>"+
+                '<div class="error-message col-3" id="error_inputWarnaBahan_'+jumlah_warna_baru+'">'+
                 '</div>'+
                 '</div>'
         $('#warna').append(opsi)

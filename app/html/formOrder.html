@@ -68,6 +68,9 @@
                 <div class="invalid-feedback">
                     Please insert "Nama Konsumen"
                 </div>
+                <div class="error-message" id="error_inputNamaKonsumen">
+                    <!--- error message -->
+                </div>
                 <div class="input-message" id="message_inputNamaKonsumen">
                     <!--- error message -->
                 </div>
@@ -109,35 +112,35 @@
         </div>
         <fieldset class="form-group">
             <div class="row" id="inputLetakSablon">
-                <label class="col-form-legend col-2" id="inputJenisSablon_label">Letak Sablon</label>
+                <label class="col-form-legend col-2" id="inputLetakSablon_label">Letak Sablon</label>
                 <div class="col-10">
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="DKi" name="letaksablon">DKi
+                        <input type="checkbox" value="DKi" name="letaksablon" disabled>DKi
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="DT" name="letaksablon">DT
+                        <input type="checkbox" value="DT" name="letaksablon" disabled>DT
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="BLK" name="letaksablon">BLK
+                        <input type="checkbox" value="BLK" name="letaksablon" disabled>BLK
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="BBL Luar" name="letaksablon">BBL Luar
+                        <input type="checkbox" value="BBL Luar" name="letaksablon" disabled>BBL Luar
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="BBL Luar + Dalam" name="letaksablon">BBL Luar + Dalam
+                        <input type="checkbox" value="BBL Luar + Dalam" name="letaksablon" disabled>BBL Luar + Dalam
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="Tangan Kiri" name="letaksablon">Tangan Kiri
+                        <input type="checkbox" value="Tangan Kiri" name="letaksablon" disabled>Tangan Kiri
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="Tangan Kanan" name="letaksablon">Tangan Kanan
+                        <input type="checkbox" value="Tangan Kanan" name="letaksablon" disabled>Tangan Kanan
                     </label>
                     <label class="checkbox-inline">
-                        <input type="checkbox" value="1/2 TS" name="letaksablon">1/2 TS
+                        <input type="checkbox" value="1/2 TS" name="letaksablon" disabled>1/2 TS
                     </label>
-                </div>
-                <div class="error-message" id="error_inputLetakSablon">
-                    <!--- error message -->
+                    <div class="error-message" id="error_inputLetakSablon">
+                        <!--- error message -->
+                    </div>
                 </div>
             </div>
         </fieldset>
@@ -146,14 +149,14 @@
             <textarea class="form-control" id="inputKeterangan" rows="2"></textarea>
         </div>
         <div>
-            <div class="form-group col-8" id="warna">
+            <div class="form-group" id="warna">
                 <input type="hidden" value="1" id="jumlah_warna">
                 <div class="row">
                         <legend class="col-form-legend">Detail Warna Bahan</legend>
                 </div>
                 <div class="row" id="warna_bahan_1">
-                    <label id="inputWarnaBahan_1_label">Warna Bahan 1 :
-                    <select  id="inputWarnaBahan_1"  required>
+                    <label class="col-3" id="inputWarnaBahan_1_label">Warna Bahan 1 </label>
+                    <select type="text" class="form-control col-5" id="inputWarnaBahan_1" name="inputWarnaBahan" onclick="return checkwarna(this.id)" required>
                         <option value="" selected>Choose...</option>
                         <option value="Abu MD1">Abu MD1</option>
                         <option value="Abu MD2">Abu MD2</option>
@@ -209,14 +212,10 @@
                         <option value="Ungu Tua">Ungu Tua</option>
                         <option value="Ungu Tua SPC">Ungu Tua SPC</option>
                     </select>
-                    </label>
-                    <div class="invalid-feedback">
-                        Please insert "Warna Bahan"
+                    <div class="error-message col-3" id="error_inputWarnaBahan_1">
+                        <!--- error message -->
                     </div>
                 </div>
-            </div>
-            <div class="error-message" id="error_inputWarnaBahan">
-                <!--- error message -->
             </div>
             <div class="row">
                     <div class="col">
@@ -237,71 +236,71 @@
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 2 </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input2_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input2_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 4 </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input4_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input4_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 6 </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input6_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input6_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 8 </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input8_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input8_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 10 </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input10_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input10_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 12 </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input12_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input12_1" input>
                     </div>
                 </div>
                 <div class="col-size">
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran XS </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="inputXS_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="inputXS_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran S </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="inputS_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="inputS_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran M </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="inputM_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="inputM_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran L </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="inputL_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="inputL_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran XL </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="inputXL_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="inputXL_1" input>
                     </div>
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 3L </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input3L_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input3L_1" input>
                     </div>
                 </div>
                 <div class="col-size">
                     <div class="form-size">
                         <div class="tag-ukuran"> Ukuran 4L </div>
                         :
-                        <input type="text" class="form-control-sm inputUkuran" id="input4L_1" input>
+                        <input type="text" class="form-control-sm inputUkuran" onkeyup="return checkukuran(this.id)" id="input4L_1" input>
                     </div>
                 </div>
             </div>
@@ -337,6 +336,7 @@
     </div>
 </body>
 <script src="../formrenderer.js"></script>
+<script src="../validateform.js"></script>
 <script>
     require('../form.js')
 </script>

@@ -78,11 +78,30 @@ input.has-error{
 input.has-success{
     border:1px solid rgb(80, 167, 99);
 }
+select.has-error{
+    border: 1px solid rgb(241, 70, 70);
+}
+select.has-success{
+    border:1px solid rgb(80, 167, 99);
+}
 .error-message{
+    margin-top: 2px;
     color:rgb(241, 70, 70);
-    font-size: 8pt;
+    font-size: 10pt;
 }
 .input-message{
+    margin-top: 2px;
     color:rgb(63, 165, 224);
-    font-size: 8pt;
+    font-size: 10pt;
+}
+
+.form-control{
+    margin-right: 4px;
+}
+.hapus{
+    max-height: 40px;
+}
+label.col-3{
+    min-width:150px;
+    max-width:150px;
 }

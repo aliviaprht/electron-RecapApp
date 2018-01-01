@@ -81,7 +81,13 @@ module.exports.showModal1 = function (pid) {
     let rowProduk = model.getProdukbyID(pid)
     $('#isiJenisProduk').text(rowProduk[0].jenis_produk)
     $('#isiJenisBahan').text(rowProduk[0].jenis_bahan)
-    $('#isiJenisSablon').text(rowProduk[0].jenis_sablon)
+    let jenis_sablon =''
+    if(rowProduk[0].jenis_sablon=='') {
+        jenis_sablon ='\n'
+    }else{
+        jenis_sablon = rowProduk[0].jenis_sablon
+    }
+    $('#isiJenisSablon').text(jenis_sablon)
     $('#isiKet').text(rowProduk[0].keterangan)
 
     //Get Letak Sablom

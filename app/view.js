@@ -1,7 +1,23 @@
 'use strict'
 const path = require('path')
 const model = require(path.join(__dirname, 'model.js'))
-
+module.exports.getMaxHeight = function(){
+  let maxheight=0;
+  $.each($('.col-process'), function(){
+      console.log($(this).height())            
+    if($(this).height()>maxheight){
+        maxheight = $(this).height()
+    }
+  }); 
+  console.log("max:"+maxheight)
+  return maxheight
+}
+module.exports.setToMaxHeight = function(max){
+    console.log(max)
+    $.each($('.col-process'), function(){         
+      $(this).height(max)
+    }); 
+}
 module.exports.showOrder = function (rowsObject) {
   console.log("show order")
   $('#LKO').html('<p class="table-title font-weight-bold">LKO</p>')

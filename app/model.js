@@ -138,6 +138,26 @@ module.exports.getOrder = function () {
   }
 }
 
+module.exports.getSearchOrder = function (code) {
+    let db = SQL.dbOpen(window.model.db)
+    if (db != null) {
+        let query = 'SELECT * FROM `order` WHERE `kode_artikel` LIKE `%'+ code +'`'
+        try {
+            let row = db.exec(query)
+            if (row !== undefined && row.length > 0) {
+                row = _rowsFromSqlDataObject(row[0])
+                view.showOrder(row)
+            } else {
+                $('#not-found').html("<b>Order not found!</b>")
+            }
+        } catch (error) {
+            console.log('model.getSearchOrder', error.message)
+        } finally {
+            SQL.dbClose(db, window.model.db)
+        }
+    }
+}
+
 //get produk by id
 module.exports.getProdukbyID = function (pid) {
   let db = SQL.dbOpen(window.model.db)

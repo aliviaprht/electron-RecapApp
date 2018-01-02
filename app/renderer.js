@@ -125,6 +125,6 @@ ipcRenderer.on('close-form-submit',(event,arg)=>{
 })
 
 ipcRenderer.on('exit-search', (event,arg)=>{
-  console.log('exit-search')
-  window.model.getOrder()
+    console.log('exit-search')
+    window.model.getOrder()
 })

@@ -21,7 +21,7 @@ let htmlPath = path.join(app.getAppPath(), 'app', 'html')
 let searchItem = fs.readFileSync(path.join(htmlPath, 'searchItem.html'), 'utf8')
 let order = fs.readFileSync(path.join(htmlPath, 'order.html'), 'utf8')
 let modal = fs.readFileSync(path.join(htmlPath, 'modal.html'), 'utf8')
-let O = cheerio.load(body)
+let O = cheerio.load(searchItem)
 O('#order').append(order)
 O('#modal').append(modal)
 

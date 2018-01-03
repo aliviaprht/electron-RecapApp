@@ -62,3 +62,10 @@ CREATE TABLE "konsumen" (
      "nama_konsumen" TEXT NOT NULL,
      "warna" TEXT NOT NULL
 );
+
+CREATE TABLE "log"(
+    "id_log" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "id_order" INTEGER NOT NULL,
+    "tanggal" DATE,
+    "proses" INTEGER NOT NULL
+);

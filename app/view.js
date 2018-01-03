@@ -46,8 +46,8 @@ module.exports.showOrder = function (rowsObject) {
     }
     if(row.proses==9){
         markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
-        '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
-        '<div class="jenisproduct">'+row.jenis_produk+'</div>'+
+        '<div class="namakonsumen">'+row.nama_konsumen+'</div>'+
+        '<div class="font-weight-bold jenisproduk">'+row.jenis_produk+'</div>'+
         '<div class="text-jumlah">'+row.jumlah+' potong (selesai)</div>'+
         '<button type="button" class="btn btn-sm detail" id="detail_'+row.id_order+'">'+
             'Details' +
@@ -55,8 +55,8 @@ module.exports.showOrder = function (rowsObject) {
         '</div>'
     }else if(row.proses==8){
         markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
-        '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
-        '<div class="jenisproduct">'+row.jenis_produk+'</div>'+
+        '<div class="namakonsumen">'+row.nama_konsumen+'</div>'+
+        '<div class="font-weight-bold jenisproduk">'+row.jenis_produk+'</div>'+
         '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
         '<button type="button" class="btn btn-sm detail" id="detail_'+row.id_order+'">'+
             'Details' +
@@ -67,8 +67,8 @@ module.exports.showOrder = function (rowsObject) {
         '</div>'
     }else{
         markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
-        '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
-        '<div class="jenisproduct">'+row.jenis_produk+'</div>'+
+        '<div class="namakonsumen">'+row.nama_konsumen+'</div>'+
+        '<div class="font-weight-bold jenisproduk">'+row.jenis_produk+'</div>'+
         '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
         '<button type="button" class="btn btn-sm detail" id="detail_'+row.id_order+'">'+
             'Details' +
@@ -98,6 +98,20 @@ module.exports.showOrder = function (rowsObject) {
       window.view.showModal3(this.id.split('_')[1])
     })
   })
+  
+    $('button.detail').hide()
+    $('button.next').hide()
+
+    $('.box-process').hover(
+    function(){
+    $('#detail_'+this.id.split('_')[1]).show()
+    $('#next_'+this.id.split('_')[1]).show()
+    },
+    function(){
+    $('#detail_'+this.id.split('_')[1]).hide()
+    $('#next_'+this.id.split('_')[1]).hide()
+    }
+    )
 }
 
 module.exports.showModal1 = function (pid) {

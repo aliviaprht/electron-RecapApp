@@ -67,6 +67,7 @@ function createAddWindow(){
   formWindow.on('close', function(){
     formWindow = null;
   });
+  formWindow.setMenu(null)
 }
 
 // Handle search item window
@@ -101,7 +102,7 @@ ipcMain.on('close-form-submit', (event, arg)=> {
 })
 // Catch search-item
 ipcMain.on('search-item', (event,arg)=> {
-  if (searchWindow!=null){
+  if (searchWindow==null){
     createSearchWindow()
   }
 })

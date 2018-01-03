@@ -61,6 +61,20 @@ $('document').ready(function () {
   var date = 'Tanggal: '+day+', '+today.getDate()+' '+month+' '+today.getFullYear()
   console.log("today: "+date)
   $('#date_today').html(date)
+  $('button.detail').hide()
+  $('button.next').hide()
+  
+$('.box-process').hover(
+  function(){
+    console.log($(this).attr('id'))
+    $('#detail_'+this.id.split('_')[1]).show()
+    $('#next_'+this.id.split('_')[1]).show()
+  },
+  function(){
+    $('#detail_'+this.id.split('_')[1]).hide()
+    $('#next_'+this.id.split('_')[1]).hide()
+  }
+)
 })
 
 
@@ -117,7 +131,6 @@ $('#modalDone button.btn-primary').click(function(){
       $('#success-save').modal('hide');
   }, 2000);
 })
-$('#close-submit').click()
 
 ipcRenderer.on('close-form-submit',(event,arg)=>{
   console.log('close-form-submit')

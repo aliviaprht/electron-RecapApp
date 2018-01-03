@@ -72,7 +72,7 @@ SQL.dbClose = function (databaseHandle, databaseFileName) {
   window.model.db.
 */
 module.exports.initDb = function (appPath, callback) {
-  let dbPath = path.join(appPath, 'example.db')
+  let dbPath = path.join(appPath, 'order.db')
   let createDb = function (dbPath) {
     // Create a database.
     let db = new SQL.Database()

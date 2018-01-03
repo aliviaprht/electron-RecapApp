@@ -13,7 +13,7 @@ window.Bootstrap = require('bootstrap')
 let webRoot = path.dirname(__dirname)
 window.view = require(path.join(webRoot, 'view.js'))
 window.model = require(path.join(webRoot, 'model.js'))
-window.model.db = path.join(app.getPath('userData'), 'example.db')
+window.model.db = path.join(app.getPath('userData'), 'order.db')
 window.form = require(path.join(webRoot, 'detail.js'))
 
 // Example starter JavaScript for disabling form submissions if there are invalid fields
@@ -74,6 +74,7 @@ function submitForm(){
         saveWarna(id_produk,warna)
         savePengiriman(id_order,pengiriman)
         saveTanggalProses(id_order)
+        saveLog(id_order)
         window.view.showModal3(id_order)
         $('#success-submit').modal('show');
         setTimeout(function() {
@@ -83,6 +84,11 @@ function submitForm(){
     }
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0;
+}
+function saveLog(id_order){
+    var today = new Date()
+    var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
+    model.saveFormData("log",{columns:['id_order','tanggal','proses'],values:[id_order,date,0]})
 }
 function saveTanggalProses(id_order){
     var today = new Date()
@@ -129,7 +135,7 @@ function saveOrder(kodeart,namaart,LKO,id_konsumen,jumlah){
 function getJumlahTotal(pengiriman,jumlah_pengiriman){
     let jumlah = 0;
     for(let i =0;i<jumlah_pengiriman;i++){
-        for(let j=0;j<12;j++){
+        for(let j=0;j<13;j++){
             jumlah += pengiriman[i][j]
         }
     }

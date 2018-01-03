@@ -51,6 +51,14 @@ app.on('ready', function () {
   
     mainWindow.on('closed', function () {
       mainWindow = null
+      if(formWindow!=null){
+        formWindow.close()
+        formWindow = null
+      }
+      if(searchWindow!=null){
+        searchWindow.close()
+        searchWindow = null
+      }
     })
   })
   
@@ -64,7 +72,7 @@ function createAddWindow(){
   });
   formWindow.loadURL(`file://${__dirname}/app/html/formOrder.html`)
   // Handle garbage collection
-  formWindow.on('close', function(){
+  formWindow.on('closed', function(){
     formWindow = null;
   });
   formWindow.setMenu(null)
@@ -99,6 +107,10 @@ ipcMain.on('close-form-submit', (event, arg)=> {
     mainWindow.webContents.send('close-form-submit')
     formWindow.close()
   }
+})
+ipcMain.on('update-order', (event, arg)=> {
+    mainWindow.webContents.send('update-order')
+  
 })
 // Catch search-item
 ipcMain.on('search-item', (event,arg)=> {

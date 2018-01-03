@@ -13,7 +13,7 @@ window.Bootstrap = require('bootstrap')
 let webRoot = path.dirname(__dirname)
 window.view = require(path.join(webRoot, 'view.js'))
 window.model = require(path.join(webRoot, 'model.js'))
-window.model.db = path.join(app.getPath('userData'), 'example.db')
+window.model.db = path.join(app.getPath('userData'), 'order.db')
 
 
 // Compose the DOM from separate HTML concerns; each from its own file.
@@ -53,28 +53,12 @@ function submitSearch() {
         let status = window.model.getSearchOrder(code)
         if(status==false){
             $('#order').html('')
-            $('#modal').html('')
             $('#not-found').html("<b>Order not found!</b>")
         }else{
             $('#not-found').html("")
             $('#order').show()
         }
     }
-    
-    $('button.detail').hide()
-    $('button.next').hide()
-  
-    $('.box-process').hover(
-  function(){
-    console.log("hover")
-    console.log($(this).attr('id'))
-    $('#detail_'+this.id.split('_')[1]).show()
-    $('#next_'+this.id.split('_')[1]).show()
-  },
-  function(){
-    $('#detail_'+this.id.split('_')[1]).hide()
-    $('#next_'+this.id.split('_')[1]).hide()
-  })
   $('#modalNext button.btn-primary').click(function(){
     var id = this.id.split('_')[1]
     var date = new Date()
@@ -98,10 +82,12 @@ function submitSearch() {
       }
     window.model.updateData("order","proses",nextprocess,"`id_order`="+id)
     window.model.updateData("tanggal_proses",proses,today,"`id_order`="+id)
+    window.model.saveFormData("log",{columns:['id_order','tanggal','proses'],values:[id,today,nextprocess]})
     submitSearch()
+    ipcRenderer.send('update-order')
     $('#modalNext').modal('hide')
     $('#success-save').modal('show');
-  
+    
     setTimeout(function() {
         $('#success-save').modal('hide');
     }, 2000);
@@ -109,8 +95,12 @@ function submitSearch() {
   
   $('#modalDone button.btn-primary').click(function(){
     var id = this.id.split('_')[1]
+    var date = new Date()
+    var today = '"'+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()+'"'
     window.model.updateData("order","proses",9,"`id_order`="+id)
+    window.model.saveFormData("log",{columns:['id_order','tanggal','proses'],values:[id,today,9]})
     submitSearch()
+    ipcRenderer.send('update-order')
     $('#modalDone').modal('hide')
     $('#success-save').modal('show');
   

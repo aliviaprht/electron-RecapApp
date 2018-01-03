@@ -72,7 +72,8 @@ button.done{
     margin-right: 2px;
 }
 .text-jumlah{
-    padding:5px;
+    font-size: 10pt;
+    padding-bottom: 5px;
 }
 p {
     margin :2px;
@@ -106,4 +107,27 @@ button:hover{
 }
 #not-found{
     margin-bottom:25px;
+}
+.box-process:hover{
+    cursor: context-menu;
+}
+.jenisproduk{
+    font-size: 10pt;
+}
+#new-order{
+    background-color:lightblue;
+    height:40px;
+    margin :15px;
+}
+.right{
+    text-align: right;
+}
+.searchbutton{
+    width:127px;
+}
+.namakonsumen{
+    font-family: Impact;
+    font-size: 11pt;
+    margin-right :2px;
+    margin-left: 2px;
 }

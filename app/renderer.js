@@ -13,7 +13,7 @@ window.Bootstrap = require('bootstrap')
 let webRoot = path.dirname(__dirname)
 window.view = require(path.join(webRoot, 'view.js'))
 window.model = require(path.join(webRoot, 'model.js'))
-window.model.db = path.join(app.getPath('userData'), 'example.db')
+window.model.db = path.join(app.getPath('userData'), 'order.db')
 window.form = require(path.join(webRoot, 'detail.js'))
 
 // Compose the DOM from separate HTML concerns; each from its own file.
@@ -61,20 +61,6 @@ $('document').ready(function () {
   var date = 'Tanggal: '+day+', '+today.getDate()+' '+month+' '+today.getFullYear()
   console.log("today: "+date)
   $('#date_today').html(date)
-  $('button.detail').hide()
-  $('button.next').hide()
-  
-$('.box-process').hover(
-  function(){
-    console.log($(this).attr('id'))
-    $('#detail_'+this.id.split('_')[1]).show()
-    $('#next_'+this.id.split('_')[1]).show()
-  },
-  function(){
-    $('#detail_'+this.id.split('_')[1]).hide()
-    $('#next_'+this.id.split('_')[1]).hide()
-  }
-)
 })
 
 
@@ -111,6 +97,7 @@ $('#modalNext button.btn-primary').click(function(){
     }
   window.model.updateData("order","proses",nextprocess,"`id_order`="+id)
   window.model.updateData("tanggal_proses",proses,today,"`id_order`="+id)
+  window.model.saveFormData("log",{columns:['id_order','tanggal','proses'],values:[id,today,nextprocess]})
   window.model.getOrder()
   $('#modalNext').modal('hide')
   $('#success-save').modal('show');
@@ -136,7 +123,10 @@ ipcRenderer.on('close-form-submit',(event,arg)=>{
   console.log('close-form-submit')
   window.model.getOrder()
 })
-
+ipcRenderer.on('update-order',(event,arg)=>{
+  console.log('update-order')
+  window.model.getOrder()
+})
 ipcRenderer.on('exit-search', (event,arg)=>{
     console.log('exit-search')
     window.model.getOrder()

@@ -120,7 +120,7 @@ module.exports.getOrder = function () {
   if (db !== null) {
     var today = new Date();
     var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-    let query = 'SELECT id_order,nama_konsumen,warna,jumlah,proses FROM `order` NATURAL JOIN `konsumen` NATURAL JOIN `tanggal_proses`' + 
+    let query = 'SELECT id_order,nama_konsumen,warna,jumlah,proses,jenis_produk FROM `order` NATURAL JOIN `konsumen` NATURAL JOIN `tanggal_proses` NATURAL JOIN `produk`' + 
      'WHERE `proses` < 9';
     try {
       let row = db.exec(query)
@@ -141,7 +141,9 @@ module.exports.getOrder = function () {
 module.exports.getSearchOrder = function (code) {
     let db = SQL.dbOpen(window.model.db)
     if (db != null) {
-        let query = 'SELECT * FROM `order` NATURAL JOIN `konsumen` WHERE `kode_artikel` LIKE "%'+ code +'"'
+        let query = 'SELECT * FROM `order` NATURAL JOIN `produk` NATURAL JOIN `konsumen` NATURAL JOIN `tanggal_proses` WHERE `kode_artikel` LIKE "%'+ code +'%"'+
+                    'OR `no_lko` LIKE "%'+ code +'%" OR `nama_konsumen` LIKE "%'+ code +'%" OR `nama_artikel` LIKE "%'+ code +'%"  OR `jenis_produk` LIKE "%'+ code +'%" '+
+                    'OR `jenis_bahan` LIKE "%'+ code +'%"'
         try {
             let row = db.exec(query)
             if (row !== undefined && row.length > 0) {
@@ -149,7 +151,6 @@ module.exports.getSearchOrder = function (code) {
                 view.showOrder(row)
                 return true
             } else {
-                $('#not-found').html("<b>Order not found!</b>")
                 return false
             }
         } catch (error) {

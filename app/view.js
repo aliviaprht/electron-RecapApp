@@ -42,12 +42,25 @@ module.exports.showOrder = function (rowsObject) {
       case 5: proses = '#JAHIT'; break;
       case 6: proses = '#PACKING'; break;
       case 7: proses = '#BELUM_KIRIM'; break;
-      case 8: proses = '#SUDAH_KIRIM';
+      default: proses = '#SUDAH_KIRIM';
     }
-    if(row.proses==8){
+    if(row.proses==9){
         markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
         '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
+        '<div class="jenisproduct">'+row.jenis_produk+'</div>'+
+        '<div class="text-jumlah">'+row.jumlah+' potong (selesai)</div>'+
+        '<button type="button" class="btn btn-sm detail" id="detail_'+row.id_order+'">'+
+            'Details' +
+        '</button>' +
+        '</div>'
+    }else if(row.proses==8){
+        markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
+        '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
+        '<div class="jenisproduct">'+row.jenis_produk+'</div>'+
         '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
+        '<button type="button" class="btn btn-sm detail" id="detail_'+row.id_order+'">'+
+            'Details' +
+        '</button>' +
         '<button type="button" class="btn btn-warning btn-sm done" id="done_'+row.id_order+'">' +
             'Done' +
         '</button>'+
@@ -55,6 +68,7 @@ module.exports.showOrder = function (rowsObject) {
     }else{
         markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
         '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
+        '<div class="jenisproduct">'+row.jenis_produk+'</div>'+
         '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
         '<button type="button" class="btn btn-sm detail" id="detail_'+row.id_order+'">'+
             'Details' +

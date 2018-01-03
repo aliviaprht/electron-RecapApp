@@ -39,13 +39,14 @@ $(document).ready(function() {
         return false;
       }
     });
-  });
+    $('#order').html(order)
+    $('#modal').html(modal)
+    $('#order').hide()
+
+  })
+
 function submitSearch() {
     console.log('submitsearch')
-    if(!$('.col-process').length){
-        $('#order').html(order)
-        $('#modal').html(modal)
-    }
     var code = $.trim($('#inputSearch').val())
     console.log("input search:"+code)
     if (code != "") {
@@ -56,6 +57,65 @@ function submitSearch() {
             $('#not-found').html("<b>Order not found!</b>")
         }else{
             $('#not-found').html("")
+            $('#order').show()
         }
     }
+    
+    $('button.detail').hide()
+    $('button.next').hide()
+  
+    $('.box-process').hover(
+  function(){
+    console.log("hover")
+    console.log($(this).attr('id'))
+    $('#detail_'+this.id.split('_')[1]).show()
+    $('#next_'+this.id.split('_')[1]).show()
+  },
+  function(){
+    $('#detail_'+this.id.split('_')[1]).hide()
+    $('#next_'+this.id.split('_')[1]).hide()
+  })
+  $('#modalNext button.btn-primary').click(function(){
+    var id = this.id.split('_')[1]
+    var date = new Date()
+    var today = '"'+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()+'"'
+    console.log("click save to id="+id)
+    var order = window.model.getOrderbyID(id)[0]
+    var currentprocess = parseInt(order.proses)
+    console.log("current process:"+currentprocess)
+    var nextprocess = currentprocess+1
+    var proses =''
+      switch(nextprocess){
+        case 0: proses = 'LKO'; break;
+        case 1: proses = 'TUNGGU_KAIN'; break;
+        case 2: proses = 'POTONG'; break;
+        case 3: proses = 'FILM'; break;
+        case 4: proses = 'SABLON'; break;
+        case 5: proses = 'JAHIT'; break;
+        case 6: proses = 'PACKING'; break;
+        case 7: proses = 'BELUM_KIRIM'; break;
+        case 8: proses = 'SUDAH_KIRIM';
+      }
+    window.model.updateData("order","proses",nextprocess,"`id_order`="+id)
+    window.model.updateData("tanggal_proses",proses,today,"`id_order`="+id)
+    submitSearch()
+    $('#modalNext').modal('hide')
+    $('#success-save').modal('show');
+  
+    setTimeout(function() {
+        $('#success-save').modal('hide');
+    }, 2000);
+  })
+  
+  $('#modalDone button.btn-primary').click(function(){
+    var id = this.id.split('_')[1]
+    window.model.updateData("order","proses",9,"`id_order`="+id)
+    submitSearch()
+    $('#modalDone').modal('hide')
+    $('#success-save').modal('show');
+  
+    setTimeout(function() {
+        $('#success-save').modal('hide');
+    }, 2000);
+  })
 }

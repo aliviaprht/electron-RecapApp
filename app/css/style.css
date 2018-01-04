@@ -108,6 +108,11 @@ button:hover{
 #not-found{
     margin-bottom:25px;
 }
+
+.test:after {
+    content: '\2807';
+    font-size: 20px;
+
 .box-process:hover{
     cursor: context-menu;
 }

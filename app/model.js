@@ -141,17 +141,20 @@ module.exports.getOrder = function () {
 module.exports.getSearchOrder = function (code) {
     let db = SQL.dbOpen(window.model.db)
     if (db != null) {
-        let query = 'SELECT * FROM `order` WHERE `kode_artikel` LIKE `%'+ code +'`'
+        let query = 'SELECT * FROM `order` NATURAL JOIN `konsumen` WHERE `kode_artikel` LIKE "%'+ code +'"'
         try {
             let row = db.exec(query)
             if (row !== undefined && row.length > 0) {
                 row = _rowsFromSqlDataObject(row[0])
                 view.showOrder(row)
+                return true
             } else {
                 $('#not-found').html("<b>Order not found!</b>")
+                return false
             }
         } catch (error) {
             console.log('model.getSearchOrder', error.message)
+            return false
         } finally {
             SQL.dbClose(db, window.model.db)
         }

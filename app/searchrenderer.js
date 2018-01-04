@@ -18,16 +18,9 @@ window.model.db = path.join(app.getPath('userData'), 'example.db')
 
 // Compose the DOM from separate HTML concerns; each from its own file.
 let htmlPath = path.join(app.getAppPath(), 'app', 'html')
-let searchItem = fs.readFileSync(path.join(htmlPath, 'searchItem.html'), 'utf8')
 let order = fs.readFileSync(path.join(htmlPath, 'order.html'), 'utf8')
 let modal = fs.readFileSync(path.join(htmlPath, 'modal.html'), 'utf8')
-let O = cheerio.load(body)
-O('#order').append(order)
-O('#modal').append(modal)
-
 // Pass the DOM from Cheerio to jQuery.
-let dom = O.html()
-$('searchItem').html(dom)
 console.log("document inserted")
 
 $('document').ready(function () {
@@ -38,10 +31,31 @@ $('#exit-search').click( function () {
     console.log("exit-search")
     ipcRenderer.send('exit-search')
 });
-
+$(document).ready(function() {
+    $(window).keydown(function(event){
+      if(event.keyCode == 13) {
+        event.preventDefault();
+        submitSearch();
+        return false;
+      }
+    });
+  });
 function submitSearch() {
+    console.log('submitsearch')
+    if(!$('.col-process').length){
+        $('#order').html(order)
+        $('#modal').html(modal)
+    }
     var code = $.trim($('#inputSearch').val())
+    console.log("input search:"+code)
     if (code != "") {
-        window.model.getSearchOrder(code)
+        let status = window.model.getSearchOrder(code)
+        if(status==false){
+            $('#order').html('')
+            $('#modal').html('')
+            $('#not-found').html("<b>Order not found!</b>")
+        }else{
+            $('#not-found').html("")
+        }
     }
 }

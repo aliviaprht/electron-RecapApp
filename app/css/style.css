@@ -131,3 +131,6 @@ button:hover{
     margin-right :2px;
     margin-left: 2px;
 }
+a.nav-link:hover{
+    cursor: pointer;
+}

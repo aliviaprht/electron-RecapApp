@@ -131,3 +131,21 @@ ipcRenderer.on('exit-search', (event,arg)=>{
     console.log('exit-search')
     window.model.getOrder()
 })
+
+$('#navbar-history').click(function(){
+  if(!$(this).hasClass('active')){
+    $(this).addClass('active')
+    $('#navbar-home').removeClass('active')
+    $('#order-list').hide()
+    $('#history-list').show()
+  }
+})
+
+$('#navbar-home').click(function(){
+  if(!$(this).hasClass('active')){
+    $(this).addClass('active')
+    $('#navbar-history').removeClass('active')
+    $('#history-list').hide()
+    $('#order-list').show()
+  }
+})

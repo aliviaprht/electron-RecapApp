@@ -9,6 +9,7 @@ const config = require(path.join(__dirname, 'package.json'))
 const model = require(path.join(__dirname, 'app', 'model.js'))
 var mainWindow = null
 var formWindow = null
+var searchWindow = null
 const BrowserWindow = electron.BrowserWindow
 
 app.on('ready', function () {
@@ -71,13 +72,13 @@ function createAddWindow(){
 
 // Handle search item window
 function createSearchWindow(){
-  formWindow = new BrowserWindow({
+  searchWindow = new BrowserWindow({
       title: 'Search Order'
   });
-    formWindow.loadURL(`file://${__dirname}/app/html/searchItem.html`)
+    searchWindow.loadURL(`file://${__dirname}/app/html/searchItem.html`)
     // Handle garbage collection
-    formWindow.on('close', function(){
-        formWindow = null;
+    searchWindow.on('close', function(){
+        searchWindow = null;
     });
 }
 
@@ -101,13 +102,13 @@ ipcMain.on('close-form-submit', (event, arg)=> {
 })
 // Catch search-item
 ipcMain.on('search-item', (event,arg)=> {
-  if (formWindow!=null){
+  if (searchWindow==null){
     createSearchWindow()
   }
 })
 // Catch exit-search
 ipcMain.on('exit-search', (event, arg)=> {
-    if(formWindow!=null){
-        formWindow.close()
+    if(searchWindow!=null){
+        searchWindow.close()
     }
 })

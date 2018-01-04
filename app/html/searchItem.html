@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Item</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../css/styleForm.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <h1 class="header">Search Item</h1>
+    <div class="container">
+        <div class="row center">
+            <form class="form-inline my-2 my-lg-0" method="post">
+                <input class="form-control mr-sm-2" type="text" id="inputSearch" placeholder="Search">
+                <button class="btn btn-outline-dark my-2 my-sm-0" id="search" onclick="return submitSearch()">Search</button>
+            </form>
+        </div>
+
+        <div class="row center" id="not-found">
+        </div>
+
+        <div class="container-fluid" id="order">
+            <!--- order.html -->
+            <div id="modal">
+                <!--- modal.html -->
+            </div>
+        </div>
+
+        <div class="row center">
+            <a class="btn btn-danger my-2 my-sm-0" id="exit-search">Exit</a>
+        </div>
+    </div>
+</body>
+</html>

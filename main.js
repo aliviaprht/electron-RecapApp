@@ -66,6 +66,7 @@ function createAddWindow(){
   formWindow.on('close', function(){
     formWindow = null;
   });
+  formWindow.setMenu(null)
 }
 
 // Catch open-form

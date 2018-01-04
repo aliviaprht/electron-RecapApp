@@ -47,28 +47,32 @@
 }
 button.detail {
     width:57px;
-    border-radius: 5pt;
+    border-radius: 5px;
+    margin-top :10px;
     margin-bottom: 5px;
     margin-left: 2px;
     margin-right: 2px;
+    color:rgb(0, 89, 255);
 }
 button.next{
+    margin-top :10px;
     width:57px;
-    border-radius: 5pt;
+    border-radius: 5px;
     margin-bottom: 5px;
     margin-left: 2px;
     margin-right: 2px;
+    color: rgb(27, 141, 27);
 }
 button.done{
+    margin-top :10px;
     width:57px;
-    border-radius: 5pt;
+    border-radius: 5px;
     margin-bottom: 5px;
     margin-left: 2px;
     margin-right: 2px;
 }
 .text-jumlah{
     padding:5px;
-    margin-bottom :15px;
 }
 p {
     margin :2px;

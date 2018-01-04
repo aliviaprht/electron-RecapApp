@@ -45,7 +45,7 @@ module.exports.showOrder = function (rowsObject) {
       case 8: proses = '#SUDAH_KIRIM';
     }
     if(row.proses==8){
-        markup += '<div class="box-process" style="background:'+row.warna+'">' +
+        markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
         '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
         '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
         '<button type="button" class="btn btn-warning btn-sm done" id="done_'+row.id_order+'">' +
@@ -53,13 +53,13 @@ module.exports.showOrder = function (rowsObject) {
         '</button>'+
         '</div>'
     }else{
-        markup += '<div class="box-process" style="background:'+row.warna+'">' +
+        markup += '<div class="box-process" id="box-order_'+row.id_order+'"style="background:'+row.warna+'">' +
         '<div class="font-weight-bold">'+row.nama_konsumen+'</div>'+
         '<div class="text-jumlah">'+row.jumlah+' potong</div>'+
-        '<button type="button" class="btn btn-primary btn-sm detail" id="detail_'+row.id_order+'">'+
+        '<button type="button" class="btn btn-sm detail" id="detail_'+row.id_order+'">'+
             'Details' +
         '</button>' +
-        '<button type="button" class="btn btn-success btn-sm next" id="next_'+row.id_order+'">' +
+        '<button type="button" class="btn btn-sm next" id="next_'+row.id_order+'">' +
             'Next' +
         '</button>'+
         '</div>'

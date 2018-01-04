@@ -131,7 +131,6 @@ $('#modalDone button.btn-primary').click(function(){
       $('#success-save').modal('hide');
   }, 2000);
 })
-$('#close-submit').click()
 
 ipcRenderer.on('close-form-submit',(event,arg)=>{
   console.log('close-form-submit')

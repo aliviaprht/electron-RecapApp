@@ -412,6 +412,29 @@ module.exports.getAllNoLKO = function () {
       }
   }
 }
+module.exports.getHistory = function (limit,offset) {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+      let query = 'SELECT `id_log`, `id_order`, `nama_konsumen`, `hari`, `tanggal`, `proses_baru`, `jenis_produk`, `kode_artikel`,`warna`'+
+                  'FROM `order` NATURAL JOIN `konsumen` NATURAL JOIN `produk` NATURAL JOIN (SELECT * FROM `log`  ORDER BY `tanggal` DESC LIMIT '+limit+' OFFSET '+offset+')'
+      try {
+        let row = db.exec(query)
+        if (row !== undefined && row.length > 0) {
+          row = _rowsFromSqlDataObject(row[0])
+          view.showHistory(row)
+          return true
+        } else {
+              console.log('model.getHistory', 'No data found')
+            return false
+          }
+      } catch (error) {
+          console.log('model.getHistory', error.message)
+          return false
+      } finally {
+          SQL.dbClose(db, window.model.db)
+      }
+  }
+}
 /*
   Insert or update a order's data in the database.
 */
@@ -492,6 +515,26 @@ module.exports.deleteOrderbyArticle = function (code, callback) {
       }
     } catch (error) {
       console.log('model.deletePerson', error.message)
+    } finally {
+      SQL.dbClose(db, window.model.db)
+    }
+  }
+}
+module.exports.deleteHistory = function (ids) {
+  let db = SQL.dbOpen(window.model.db)
+  if (db !== null) {
+    let args = ids.join(", ")
+    console.log("delete log"+args)
+    let query = "DELETE FROM `log` WHERE `id_log` IN ("+args+")"
+    let statement = db.prepare(query)
+    try {
+      if (statement.run()) {
+        console.log('model.deleteHistory success')
+      } else {
+        console.log('model.deleteHistory', 'No data found for id =',args)
+      }
+    } catch (error) {
+      console.log('model.deleteHistory', error.message)
     } finally {
       SQL.dbClose(db, window.model.db)
     }

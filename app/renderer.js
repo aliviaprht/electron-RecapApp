@@ -22,10 +22,12 @@ let body = fs.readFileSync(path.join(htmlPath, 'body.html'), 'utf8')
 let navbar = fs.readFileSync(path.join(htmlPath, 'navbar.html'), 'utf8')
 let order = fs.readFileSync(path.join(htmlPath, 'order.html'), 'utf8')
 let modal = fs.readFileSync(path.join(htmlPath, 'modal.html'), 'utf8')
+let history = fs.readFileSync(path.join(htmlPath, 'history.html'), 'utf8')
 let O = cheerio.load(body)
 O('#navbar').append(navbar)
 O('#order').append(order)
 O('#modal').append(modal)
+O('#history').append(history)
 
 // Pass the DOM from Cheerio to jQuery.
 let dom = O.html()
@@ -58,6 +60,8 @@ $('document').ready(function () {
     case 10: month = 'November'; break;
     case 11: month = 'Desember'; break;
   }
+  $('#history-list').hide()
+
   var date = 'Tanggal: '+day+', '+today.getDate()+' '+month+' '+today.getFullYear()
   console.log("today: "+date)
   $('#date_today').html(date)
@@ -77,7 +81,7 @@ $('#search-item').click( function () {
 $('#modalNext button.btn-primary').click(function(){
   var id = this.id.split('_')[1]
   var date = new Date()
-  var today = '"'+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()+'"'
+  var today = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()
   console.log("click save to id="+id)
   var order = window.model.getOrderbyID(id)[0]
   var currentprocess = parseInt(order.proses)
@@ -96,8 +100,8 @@ $('#modalNext button.btn-primary').click(function(){
       case 8: proses = 'SUDAH_KIRIM';
     }
   window.model.updateData("order","proses",nextprocess,"`id_order`="+id)
-  window.model.updateData("tanggal_proses",proses,today,"`id_order`="+id)
-  window.model.saveFormData("log",{columns:['id_order','tanggal','proses'],values:[id,today,nextprocess]})
+  window.model.updateData("tanggal_proses",proses,'"'+today+'"',"`id_order`="+id)
+  window.model.saveFormData("log",{columns:['id_order','tanggal','hari','proses_baru'],values:[id,today,date.getDay(),nextprocess]})
   window.model.getOrder()
   $('#modalNext').modal('hide')
   $('#success-save').modal('show');
@@ -130,4 +134,38 @@ ipcRenderer.on('update-order',(event,arg)=>{
 ipcRenderer.on('exit-search', (event,arg)=>{
     console.log('exit-search')
     window.model.getOrder()
+})
+
+$('#navbar-history').click(function(){
+  if(!$(this).hasClass('active')){
+    $(this).addClass('active')
+    $('#navbar-home').removeClass('active')
+    $('#order-list').hide()
+    $('#history-list').show()
+    $('#title').html('HISTORY')
+    $('#date_today').hide()
+    $('#new-order').hide()
+    $('#history-found').html('')
+    let status = window.model.getHistory(20,0)
+    if(status==false){
+      $('#history-not-found').html('No history found')
+    }else{
+      $('#history-not-found').html('')
+    }
+  }else{
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+})
+
+$('#navbar-home').click(function(){
+  if(!$(this).hasClass('active')){
+    $(this).addClass('active')
+    $('#navbar-history').removeClass('active')
+    $('#history-list').hide()
+    $('#order-list').show()
+    $('#title').html('WORK IN PROCESS')
+    $('#date_today').show()
+    $('#new-order').show()
+  }
 })

@@ -88,7 +88,8 @@ function submitForm(){
 function saveLog(id_order){
     var today = new Date()
     var date = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear();
-    model.saveFormData("log",{columns:['id_order','tanggal','proses'],values:[id_order,date,0]})
+    window.model.saveFormData("log",{columns:['id_order','tanggal','hari','proses_baru'],values:[id_order,date,today.getDay(),0]})
+    
 }
 function saveTanggalProses(id_order){
     var today = new Date()

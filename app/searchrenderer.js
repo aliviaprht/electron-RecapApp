@@ -81,8 +81,8 @@ function submitSearch() {
         case 8: proses = 'SUDAH_KIRIM';
       }
     window.model.updateData("order","proses",nextprocess,"`id_order`="+id)
-    window.model.updateData("tanggal_proses",proses,today,"`id_order`="+id)
-    window.model.saveFormData("log",{columns:['id_order','tanggal','proses'],values:[id,today,nextprocess]})
+    window.model.updateData("tanggal_proses",proses,'"'+today+'"',"`id_order`="+id)
+    window.model.saveFormData("log",{columns:['id_order','tanggal','hari','proses_baru'],values:[id,today,date.getDay(),nextprocess]})
     submitSearch()
     ipcRenderer.send('update-order')
     $('#modalNext').modal('hide')

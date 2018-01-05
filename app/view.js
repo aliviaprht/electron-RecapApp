@@ -18,6 +18,124 @@ module.exports.setToMaxHeight = function(max){
       $(this).height(max)
     }); 
 }
+module.exports.showHistory = function(rowsObject){
+    console.log('show history')
+    for (let rowId in rowsObject) {
+        let markup = ''
+        let row = rowsObject[rowId]
+        let status =''
+        switch(row.proses_baru){
+            case 0: status = ' diterima'; break;
+            case 1: status = ' masuk ke proses TUNGGU KAIN'; break;
+            case 2: status = ' masuk ke proses POTONG'; break;
+            case 3: status = ' masuk ke proses FILM'; break;
+            case 4: status = ' masuk ke proses SABLON'; break;
+            case 5: status = ' masuk ke proses JAHIT'; break;
+            case 6: status = ' masuk ke proses PACKING'; break;
+            case 7: status = ' sudah PACKING, masuk ke tahap BELUM KIRIM'; break;
+            default: status = ' SUDAH DIKIRIM';
+          }
+        markup += '<div class="row" id="history_'+row.id_log+'">'+
+                    '<div class="col-sm-1">'+
+                        '<input type="checkbox" name="deletehistory" value="delete_'+row.id_order+'">'+
+                    '</div>'+
+                    '<div class="col-sm-3 kode_artikel" id="isiKodeArt_'+row.id_order+'">'+row.kode_artikel+'</div>'+
+                    '<div class="col-sm-7">'+
+                        '<span>Order</span>'+
+                        '<span id="isiJenisOrder"> '+row.jenis_produk+'</span>'+
+                        '<span> dari</span>'+
+                        '<span id="isiNamaKonsumen"> '+row.nama_konsumen+'</span>'+
+                        '<span>'+status+'</span>'+
+                    '</div>'+
+                    '<div class="col-sm-1 dropdown">'+
+                        '<a class="test clickable" id="option_'+row.id_log+'" style="width:30px;"></a>'+
+                        '<div id="menu_'+row.id_log+'" class="dropdown-content">'+
+                            '<a class="btn left" id="history-delete_'+row.id_log+'" name="delete">Delete</a>'+
+                            '<a class="btn left" id="history-detail_'+row.id_log+'" name="detail">See Details</a>'+
+                        '</div>'+
+                    '</div>'+
+                    '</div>'
+        if(!$('#content_'+row.tanggal).length){
+            let day = ''
+            let month = ''
+            switch(row.hari){
+                case 1: day = 'Senin'; break;
+                case 2: day = 'Selasa'; break;
+                case 3: day = 'Rabu'; break;
+                case 4: day = 'Kamis'; break;
+                case 5: day = 'Jumat'; break;
+                case 6: day = 'Sabtu'; break;
+                case 0: day = 'Minggu'; break;
+            }
+            console.log('month '+row.tanggal.split('-')[1])
+            switch(parseInt(row.tanggal.split('-')[1])){
+                case 1: month = 'Januari'; break;
+                case 2: month = 'Februari'; break;
+                case 3: month = 'Maret'; break;
+                case 4: month = 'April'; break;
+                case 5: month = 'Mei'; break;
+                case 6: month = 'Juni'; break;
+                case 7: month = 'Juli'; break;
+                case 8: month = 'Agustus'; break;
+                case 9: month = 'September'; break;
+                case 10: month = 'Oktober'; break;
+                case 11: month = 'November'; break;
+                case 12: month = 'Desember'; break;
+            }
+            console.log('month '+month)
+            let card ='<div class="container-history card" id="history_'+row.tanggal+'">'+
+            '<div class="namaInfo card-header">'+day+', '+row.tanggal.split('-')[0]+' '+month+' '+row.tanggal.split('-')[2]+' </div>'+
+            '<div class="card-body" id="content_'+row.tanggal+'">'+
+            '<div>'+
+            '<div>'
+            $('#history-found').append(card)
+        }
+        $('#content_'+row.tanggal).append(markup)
+    }
+    $('.kode_artikel').each(function (idx, obj) {
+        $(obj).on('click', function () {
+          console.log("detail id="+this.id.split('_')[1])
+          window.view.showModal1(this.id.split('_')[1])
+        })
+      })
+      $('.dropdown-content').hide()
+      $('a.test').each(function (idx, obj) {
+        $(obj).on('click', function () {
+          console.log("option id="+this.id.split('_')[1])
+          if($('#menu_'+this.id.split('_')[1]).is(':visible')){
+            $('#menu_'+this.id.split('_')[1]).hide()
+          }else{
+            $('#menu_'+this.id.split('_')[1]).show()
+          }
+        })
+      })
+      $('a[name="delete"]').each(function (idx, obj) {
+        $(obj).on('click', function () {
+          console.log("delete id="+this.id.split('_')[1])
+          model.deleteHistory([parseInt(this.id.split('_')[1])])
+          $('#history_'+this.id.split('_')[1]).remove()
+        })
+      })
+      $('a[name="detail"]').each(function (idx, obj) {
+        $(obj).on('click', function () {
+            console.log("detail id="+this.id.split('_')[1])
+            window.view.showModal1(this.id.split('_')[1])
+        })
+      })
+      $('.container-history card-body').each(function (idx, obj) {
+        if(!$.trim( $(obj).html() ).length) {
+            console.log("empty")
+            $('#content_'+this.id.split('_')[1]).remove()
+        }
+      })
+      window.onclick = function(e) {
+        if (!e.target.matches('a.test')) {
+          if($('.dropdown-content').is(':visible')){
+            $('.dropdown-content').hide()
+          }
+        }
+      }
+}
 module.exports.showOrder = function (rowsObject) {
   console.log("show order")
   $('#LKO').html('<p class="table-title font-weight-bold">LKO</p>')

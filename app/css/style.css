@@ -112,6 +112,7 @@ button:hover{
 .test:after {
     content: '\2807';
     font-size: 20px;
+}
 
 .box-process:hover{
     cursor: context-menu;
@@ -130,8 +131,9 @@ button:hover{
 .searchbutton{
     width:127px;
 }
-.namakonsumen{
+.namakonsumen {
     font-family: Impact;
     font-size: 11pt;
-    margin-right :2px;
+    margin-right: 2px;
     margin-left: 2px;
+}

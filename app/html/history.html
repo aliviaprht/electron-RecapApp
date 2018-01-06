@@ -1,115 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-
-</head>
-<body>
-    <h1 class="header">PT.Kumpay Recap Order Application</h1>
-
-    <nav id ="navbar" class="navbar navbar-expand-sm bg-info navbar-dark">
-        <!--- navbar.html -->
-    </nav>
-
-    <div class="row center">
-        <h3>History</h3>
-    </div>
-
-    <div class="container-fluid" id="history">
-        <div class="row">
-            <div class="namaInfo" id="date_history">Senin, 1 Januari 2018 </div>
+    <div class="container-fluid panel-group" id="history-list">
+        <div class="center" id="history-not-found">
+            <!--- not found-->
         </div>
-        <div class="row">
-            <div class="col-sm-1">
-               <input type="checkbox" value="delete">
-            </div>
-            <div class="col-sm-3" id="isiKodeArt">XXX-111217-OSING001</div>
-            <div class="col-sm-7">
-                <span>Order</span>
-                <span id="isiJenisOrder"> [Jenis Order]</span>
-                <span> dari</span>
-                <span id="isiNamaKonsumen"> [Ibu Budi]</span>
-                <span> masuk ke tahap</span>
-                <span id="isiProses"> [proses]</span>
-            </div>
-            <div class="col-sm-1">
-                <button class="btn-outline-dark btn-sm test" style="width:30px;"></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <input type="checkbox" value="delete">
-            </div>
-            <div class="col-sm-3" id="isiKodeArt">XXX-111217-OSING001</div>
-            <div class="col-sm-7">
-                <span>Order</span>
-                <span id="isiJenisOrder"> [Jenis Order]</span>
-                <span> dari</span>
-                <span id="isiNamaKonsumen"> [Ibu Budi]</span>
-                <span> masuk ke tahap</span>
-                <span id="isiProses"> [proses]</span>
-            </div>
-            <div class="col-sm-1">
-                <button class="btn-outline-dark btn-sm test" style="width:30px;"></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <input type="checkbox" value="delete">
-            </div>
-            <div class="col-sm-3" id="isiKodeArt">XXX-111217-OSING001</div>
-            <div class="col-sm-7">
-                <span>Order</span>
-                <span id="isiJenisOrder"> [Jenis Order]</span>
-                <span> dari</span>
-                <span id="isiNamaKonsumen"> [Ibu Budi]</span>
-                <span> masuk ke tahap</span>
-                <span id="isiProses"> [proses]</span>
-            </div>
-            <div class="col-sm-1">
-                <button class="btn-outline-dark btn-sm test" style="width:30px;"></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <input type="checkbox" value="delete">
-            </div>
-            <div class="col-sm-3" id="isiKodeArt">XXX-111217-OSING001</div>
-            <div class="col-sm-7">
-                <span>Order</span>
-                <span id="isiJenisOrder"> [Jenis Order]</span>
-                <span> dari</span>
-                <span id="isiNamaKonsumen"> [Ibu Budi]</span>
-                <span> masuk ke tahap</span>
-                <span id="isiProses"> [proses]</span>
-            </div>
-            <div class="col-sm-1">
-                <button class="btn-outline-dark btn-sm test" style="width:30px;"></button>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-1">
-                <input type="checkbox" value="delete">
-            </div>
-            <div class="col-sm-3" id="isiKodeArt">XXX-111217-OSING001</div>
-            <div class="col-sm-7">
-                <span>Order</span>
-                <span id="isiJenisOrder"> [Jenis Order]</span>
-                <span> dari</span>
-                <span id="isiNamaKonsumen"> [Ibu Budi]</span>
-                <span> masuk ke tahap</span>
-                <span id="isiProses"> [proses]</span>
-            </div>
-            <div class="col-sm-1">
-                <button class="btn-outline-dark btn-sm test" style="width:30px;"></button>
+        <div id="history-found">
+            <div class="container-history card" id="history_tanggal">
+                <div class="namaInfo card-header">Senin, 1 Januari 2018 </div>
+                <div class="card-body" id="content_tanggal">
+                    <div class="row">
+                        <div class="col-sm-1">
+                            <input type="checkbox" value="delete">
+                        </div>
+                        <a class="col-sm-3 clickable" id="isiKodeArt_id">XXX-111217-OSING001</a>
+                        <div class="col-sm-7">
+                            <span>Order</span>
+                            <span id="isiJenisOrder"> [Jenis Order]</span>
+                            <span> dari</span>
+                            <span id="isiNamaKonsumen"> [Ibu Budi]</span>
+                            <span> masuk ke tahap</span>
+                            <span id="isiProses"> [proses]</span>
+                        </div>
+                        <div class="col-sm-1">
+                            <a class="test clickable" style="width:30px;"></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</body>
-</html>

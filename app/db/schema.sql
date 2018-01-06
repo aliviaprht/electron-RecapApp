@@ -66,6 +66,7 @@ CREATE TABLE "konsumen" (
 CREATE TABLE "log"(
     "id_log" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
     "id_order" INTEGER NOT NULL,
+    "hari" INTEGER,
     "tanggal" DATE,
-    "proses" INTEGER NOT NULL
+    "proses_baru" INTEGER NOT NULL
 );

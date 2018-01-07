@@ -117,12 +117,13 @@ $(document).ready(function(){
 })
 function checkwarna(id){
     console.log(id)            
-    let value = $('#'+id+' option:selected').val()
-    if(value!=''){
+    let value1 = $('#'+id+' option:selected').val()
+    let value2 = $('#inputOtherWarna_'+id).val()
+    if(value1!=='' || value2 !==""){
         console.log(id+' not null')
         sendValidation(id,true,true)
     }else{
-        sendValidation(id,'Please choose Warna Bahan '+id.split('_')[1],false) 
+        sendValidation(id,'Please choose Warna Bahan or input Warna Lain '+id.split('_')[1],false)
     }
 }
 function checkukuran(id){

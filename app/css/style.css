@@ -131,10 +131,10 @@ button:hover{
 .searchbutton{
     width:127px;
 }
-.namakonsumen{
+.namakonsumen {
     font-family: Impact;
     font-size: 11pt;
-    margin-right :2px;
+    margin-right: 2px;
     margin-left: 2px;
 }
 a.nav-link:hover{

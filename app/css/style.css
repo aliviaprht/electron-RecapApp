@@ -143,6 +143,7 @@ a.nav-link:hover{
 .container-history{
     margin-left:10%;
     margin-bottom:10px;
+    margin-top:30px;
 }
 .clickable:hover{
     cursor: pointer;
@@ -154,9 +155,6 @@ a.nav-link:hover{
     width: 100%;
     z-index: 10;
     margin-right:0px;
-}
-#history{
-    margin-top:30px;
 }
 .kode_artikel:hover{
     color: deepskyblue;
@@ -204,3 +202,22 @@ a.nav-link:hover{
 .dropdown a:hover {background-color: #f1f1f1}
 
 .show {display:block;}
+
+#to-delete-history{
+    background-color: rgb(10, 134, 93);
+    color: white;
+    width: 100%;
+    margin-right: -15px;
+}
+.number-delete{
+    margin-left:10%;
+    display: inline-block;
+}
+.button-delete{
+    text-align: right;
+    margin-right: 10px;
+    display: inline-block;
+}
+#cancel-delete{
+    margin-right:5px;
+}

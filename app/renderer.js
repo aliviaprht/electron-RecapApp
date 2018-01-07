@@ -65,6 +65,7 @@ $('document').ready(function () {
   var date = 'Tanggal: '+day+', '+today.getDate()+' '+month+' '+today.getFullYear()
   console.log("today: "+date)
   $('#date_today').html(date)
+  $("#to-delete-history").hide()
 })
 
 
@@ -167,5 +168,22 @@ $('#navbar-home').click(function(){
     $('#title').html('WORK IN PROCESS')
     $('#date_today').show()
     $('#new-order').show()
+    $('#allcheck').val(0)
   }
+})
+
+$('.cancel-delete').click(function(){
+  $.each($("input[name='deletehistory']"), function(){
+    $(this).prop('checked',false)
+  }); 
+  $('#to-delete-history').hide()
+  $('#head').show()
+})
+$('.delete-history').click(function(){
+  $.each($("input[name='deletehistory']:checked"), function(){
+    model.deleteHistory([parseInt(this.id.split('_')[1])])
+    $('#history_'+this.id.split('_')[1]).remove()
+  }); 
+  $('#to-delete-history').hide()
+  $('#head').show()
 })

@@ -135,6 +135,35 @@ module.exports.showHistory = function(rowsObject){
           }
         }
       }
+      $.each($("input[name='deletehistory']"), function(idx, obj){            
+        $(obj).on('click', function () {
+           if($(obj).prop("checked")){
+                window.view.addcheck()
+           }else{
+                window.view.removecheck()
+           }
+           if(parseInt($("#allcheck").val())==0){
+               $('#to-delete-history').hide()
+               $('#head').show()
+           }else{
+               $('.number-delete').html($("#allcheck").val()+" selected")
+               $('#head').hide()
+               $('#to-delete-history').show()
+           }
+        })
+      }); 
+}
+module.exports.addcheck = function(){
+    var allcheck = parseInt($("#allcheck").val())
+    console.log("allcheck: "+$("#allcheck").val())
+    $("#allcheck").val(allcheck+1)
+    console.log("allcheck new : "+$("#allcheck").val())
+}
+module.exports.removecheck = function(){
+    var allcheck = parseInt($("#allcheck").val())
+    console.log("allcheck: "+$("#allcheck").val())
+    $("#allcheck").val(allcheck-1)
+    console.log("allcheck new : "+$("#allcheck").val())
 }
 module.exports.showOrder = function (rowsObject) {
   console.log("show order")

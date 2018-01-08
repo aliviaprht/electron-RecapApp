@@ -68,5 +68,6 @@ CREATE TABLE "log"(
     "id_order" INTEGER NOT NULL,
     "hari" INTEGER,
     "tanggal" DATE,
-    "proses_baru" INTEGER NOT NULL
+    "proses_baru" INTEGER NOT NULL,
+    "timestamp" DATETIME DEFAULT CURRENT_TIMESTAMP
 );

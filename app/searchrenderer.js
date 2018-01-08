@@ -62,7 +62,7 @@ function submitSearch() {
   $('#modalNext button.btn-primary').click(function(){
     var id = this.id.split('_')[1]
     var date = new Date()
-    var today = '"'+date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()+'"'
+    var today = date.getDate()+'-'+(date.getMonth()+1)+'-'+date.getFullYear()
     console.log("click save to id="+id)
     var order = window.model.getOrderbyID(id)[0]
     var currentprocess = parseInt(order.proses)

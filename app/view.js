@@ -20,6 +20,7 @@ module.exports.setToMaxHeight = function(max){
 }
 module.exports.showHistory = function(rowsObject){
     console.log('show history')
+    $('#jumlah-all-history').val(0)
     for (let rowId in rowsObject) {
         let markup = ''
         let row = rowsObject[rowId]
@@ -36,8 +37,9 @@ module.exports.showHistory = function(rowsObject){
             default: status = ' SUDAH DIKIRIM';
           }
         markup += '<div class="row" id="history_'+row.id_log+'">'+
+                    '<input type="hidden" value="'+row.tanggal+'" id="tanggal_'+row.id_log+'">'+
                     '<div class="col-sm-1">'+
-                        '<input type="checkbox" name="deletehistory" value="delete_'+row.id_order+'">'+
+                        '<input type="checkbox" name="deletehistory" id="delete_'+row.id_log+'">'+
                     '</div>'+
                     '<div class="col-sm-3 kode_artikel" id="isiKodeArt_'+row.id_order+'">'+row.kode_artikel+'</div>'+
                     '<div class="col-sm-7">'+
@@ -49,9 +51,9 @@ module.exports.showHistory = function(rowsObject){
                     '</div>'+
                     '<div class="col-sm-1 dropdown">'+
                         '<a class="test clickable" id="option_'+row.id_log+'" style="width:30px;"></a>'+
-                        '<div id="menu_'+row.id_log+'" class="dropdown-content">'+
-                            '<a class="btn left" id="history-delete_'+row.id_log+'" name="delete">Delete</a>'+
-                            '<a class="btn left" id="history-detail_'+row.id_log+'" name="detail">See Details</a>'+
+                        '<div id="menu_'+row.id_log+'" class="dropdown-content left">'+
+                            '<a class="btn" id="history-delete_'+row.id_log+'" name="delete">Delete</a>'+
+                            '<a class="btn" id="history-detail_'+row.id_order+'" name="detail">See Details</a>'+
                         '</div>'+
                     '</div>'+
                     '</div>'
@@ -84,13 +86,19 @@ module.exports.showHistory = function(rowsObject){
             }
             console.log('month '+month)
             let card ='<div class="container-history card" id="history_'+row.tanggal+'">'+
+            '<input type="hidden" value="0" id="jumlah-history_'+row.tanggal+'">' +
             '<div class="namaInfo card-header">'+day+', '+row.tanggal.split('-')[0]+' '+month+' '+row.tanggal.split('-')[2]+' </div>'+
             '<div class="card-body" id="content_'+row.tanggal+'">'+
-            '<div>'+
-            '<div>'
+            '</div>'+
+            '</div>'
             $('#history-found').append(card)
         }
         $('#content_'+row.tanggal).append(markup)
+        let jumlah_history = parseInt($('#jumlah-history_'+row.tanggal).val())
+        $('#jumlah-history_'+row.tanggal).val(jumlah_history+1)
+        console.log("jumlah history "+row.tanggal+"="+$('#jumlah-history_'+row.tanggal).val())
+        let jumlah_all_history =  parseInt($('#jumlah-all-history').val())
+          $('#jumlah-all-history').val(jumlah_all_history+1)
     }
     $('.kode_artikel').each(function (idx, obj) {
         $(obj).on('click', function () {
@@ -113,7 +121,20 @@ module.exports.showHistory = function(rowsObject){
         $(obj).on('click', function () {
           console.log("delete id="+this.id.split('_')[1])
           model.deleteHistory([parseInt(this.id.split('_')[1])])
+          let tanggal = $('#tanggal_'+this.id.split('_')[1]).val()
+          console.log("tanggal yg delete :"+tanggal)
+          let jumlah_history = parseInt($('#jumlah-history_'+tanggal).val())
+          $('#jumlah-history_'+tanggal).val(jumlah_history-1)
+          console.log("jumlah history "+tanggal+"="+$('#jumlah-history_'+tanggal).val())
           $('#history_'+this.id.split('_')[1]).remove()
+          let jumlah_all_history =  parseInt($('#jumlah-all-history').val())
+          $('#jumlah-all-history').val(jumlah_all_history-1)
+          if(jumlah_history==1){
+              $('#history_'+tanggal).remove()
+          }
+          if(parseInt($('#jumlah-all-history').val())==0){
+            $('#history-not-found').html('No history found')
+          }
         })
       })
       $('a[name="detail"]').each(function (idx, obj) {

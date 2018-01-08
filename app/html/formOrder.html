@@ -157,7 +157,7 @@
                 </div>
                 <div class="row" id="warna_bahan_1">
                     <label class="col-3" id="inputWarnaBahan_1_label">Warna Bahan 1 </label>
-                    <select type="text" class="form-control col-3" id="inputWarnaBahan_1" name="inputWarnaBahan" onclick="return checkwarna(this.id)" required>
+                    <select type="text" class="form-control col-3" id="inputWarnaBahan_1" name="inputWarnaBahan" onclick="return checkwarna(this.id)">
                         <option value="" selected>Choose...</option>
                         <option value="Abu MD1">Abu MD1</option>
                         <option value="Abu MD2">Abu MD2</option>
@@ -214,7 +214,7 @@
                         <option value="Ungu Tua SPC">Ungu Tua SPC</option>
                     </select>
                     <label class="col-2" id="inputOtherWarna_1_label">Warna Lain :</label>
-                    <input class="form-control col-3" type="text" id="inputOtherWarna_1">
+                    <input class="form-control col-3 otherwarna" type="text" id="inputOtherWarna_1" name="otherwarna" onkeyup="return checkotherwarna(this.id)">
                     <div class="error-message col-3" id="error_inputWarnaBahan_1">
                         <!--- error message -->
                     </div>

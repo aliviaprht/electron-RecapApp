@@ -32,6 +32,7 @@ O('#history').append(history)
 // Pass the DOM from Cheerio to jQuery.
 let dom = O.html()
 $('body').html(dom)
+$("#to-delete-history").hide()
 console.log("document inserted")
 $('document').ready(function () {
   window.model.getOrder()
@@ -65,7 +66,6 @@ $('document').ready(function () {
   var date = 'Tanggal: '+day+', '+today.getDate()+' '+month+' '+today.getFullYear()
   console.log("today: "+date)
   $('#date_today').html(date)
-  $("#to-delete-history").hide()
 })
 
 
@@ -164,26 +164,43 @@ $('#navbar-home').click(function(){
     $(this).addClass('active')
     $('#navbar-history').removeClass('active')
     $('#history-list').hide()
+    $('#to-delete-history').hide()
     $('#order-list').show()
     $('#title').html('WORK IN PROCESS')
     $('#date_today').show()
     $('#new-order').show()
+    $('#head').show()
     $('#allcheck').val(0)
   }
 })
 
-$('.cancel-delete').click(function(){
+$('#cancel-delete').click(function(){
   $.each($("input[name='deletehistory']"), function(){
     $(this).prop('checked',false)
   }); 
+  $('#allcheck').val(0)
   $('#to-delete-history').hide()
   $('#head').show()
 })
-$('.delete-history').click(function(){
+$('#delete-history').click(function(){
   $.each($("input[name='deletehistory']:checked"), function(){
     model.deleteHistory([parseInt(this.id.split('_')[1])])
+    let tanggal = $('#tanggal_'+this.id.split('_')[1]).val()
+    console.log("tanggal yg delete :"+tanggal)
+    let jumlah_history = parseInt($('#jumlah-history_'+tanggal).val())
+    $('#jumlah-history_'+tanggal).val(jumlah_history-1)
+    console.log("jumlah history "+tanggal+"="+$('#jumlah-history_'+tanggal).val())
     $('#history_'+this.id.split('_')[1]).remove()
+    let jumlah_all_history =  parseInt($('#jumlah-all-history').val())
+    $('#jumlah-all-history').val(jumlah_all_history-1)
+    if(jumlah_history==1){
+        $('#history_'+tanggal).remove()
+    }
+    if(parseInt($('#jumlah-all-history').val())==0){
+      $('#history-not-found').html('No history found')
+    }
   }); 
   $('#to-delete-history').hide()
   $('#head').show()
+  $('#allcheck').val(0)
 })

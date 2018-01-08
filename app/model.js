@@ -416,7 +416,7 @@ module.exports.getHistory = function (limit,offset) {
   let db = SQL.dbOpen(window.model.db)
   if (db !== null) {
       let query = 'SELECT `id_log`, `id_order`, `nama_konsumen`, `hari`, `tanggal`, `proses_baru`, `jenis_produk`, `kode_artikel`,`warna`'+
-                  'FROM `order` NATURAL JOIN `konsumen` NATURAL JOIN `produk` NATURAL JOIN (SELECT * FROM `log`  ORDER BY `tanggal` DESC LIMIT '+limit+' OFFSET '+offset+')'
+                  'FROM `order` NATURAL JOIN `konsumen` NATURAL JOIN `produk` NATURAL JOIN (SELECT * FROM `log`  ORDER BY `timestamp` DESC LIMIT '+limit+' OFFSET '+offset+')'
       try {
         let row = db.exec(query)
         if (row !== undefined && row.length > 0) {

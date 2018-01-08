@@ -114,16 +114,35 @@ $(document).ready(function(){
             }
         }
     });
+ 
 })
 function checkwarna(id){
     console.log(id)            
     let value1 = $('#'+id+' option:selected').val()
-    let value2 = $('#inputOtherWarna_'+id).val()
-    if(value1!=='' || value2 !==""){
+    console.log(value1)
+    let value2 = $('#inputOtherWarna_'+id.split('_')[1]).val()
+    console.log(value2)
+    if(value1=='' && value2 ==""){
+        sendValidation(id,'Please choose Warna Bahan or input Warna Lain '+id.split('_')[1],false)
+        sendValidation('inputOtherWarna_'+id.split('_')[1],false,false)
+    }else{
         console.log(id+' not null')
         sendValidation(id,true,true)
+        sendValidation('inputOtherWarna_'+id.split('_')[1],true,true)
+        $('#inputOtherWarna_'+id.split('_')[1]).val('')
+    }
+}
+function checkotherwarna(id){           
+    let ID = id.split('_')[1]
+    if($('#'+id).val()==''){
+        if($('#inputWarnaBahan_'+ID).val()==''){
+            sendValidation('inputOtherWarna_'+ID,false,false)
+            sendValidation('inputWarnaBahan_'+ID,'Please choose Warna Bahan or input Warna Lain '+ID,false)
+        }
     }else{
-        sendValidation(id,'Please choose Warna Bahan or input Warna Lain '+id.split('_')[1],false)
+        sendValidation('inputWarnaBahan_'+ID,true,true)
+        sendValidation('inputOtherWarna_'+ID,true,true)
+        $('#inputWarnaBahan_'+ID).prop('selectedIndex',0);
     }
 }
 function checkukuran(id){

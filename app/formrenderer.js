@@ -58,7 +58,11 @@ function submitForm(){
         var jumlah_warna = $('#jumlah_warna').val()
         var warna = [];
             for(var i=1;i<=jumlah_warna;i++){
-                warna.push($('#inputWarnaBahan_'+i+' option:selected').val())
+                if($('#inputWarnaBahan_'+i+' option:selected').val()==""){
+                    warna.push($('#inputOtherWarna_'+i).val())
+                }else{
+                    warna.push($('#inputWarnaBahan_'+i+' option:selected').val())
+                }
             }
         var keterangan = $('#inputKeterangan').val()
         var jumlah_pengiriman = parseInt($('#jumlah_pengiriman').val())

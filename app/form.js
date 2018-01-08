@@ -114,7 +114,7 @@ $('#tambah_warna').click(function(){
     $('#hapus_warna_'+jumlah_warna).hide()
     var opsi = '<div class="row" id="warna_bahan_'+jumlah_warna_baru+'">' +
                 '<label class="col-3" id="inputWarnaBahan_'+jumlah_warna_baru+'_label">Warna Bahan '+jumlah_warna_baru+' </label>'+
-                '<select type="text" class="form-control col-3" id="inputWarnaBahan_'+jumlah_warna_baru+'" name="inputWarnaBahan" onclick="return checkwarna(this.id)" required>"'+
+                '<select type="text" class="form-control col-3" id="inputWarnaBahan_'+jumlah_warna_baru+'" name="inputWarnaBahan" onclick="return checkwarna(this.id)">"'+
                 '<option value="" selected>Choose...</option>' +
                 '<option value="Abu MD1">Abu MD1</option>' +
                 '<option value="Abu MD2">Abu MD2</option>' +
@@ -171,9 +171,9 @@ $('#tambah_warna').click(function(){
                 '<option value="Ungu Tua SPC">Ungu Tua SPC</option>'+
                 '</select>'+
                 '<label class="col-2" id="inputOtherWarna_'+jumlah_warna_baru+'_label">Warna Lain :</label>'+
-                '<input class="form-control col-3" type="text" id="inputOtherWarna_'+jumlah_warna_baru+'">'+
+                '<input class="form-control col-3 otherwarna" type="text" id="inputOtherWarna_'+jumlah_warna_baru+'" name="otherwarna" onkeyup="return checkotherwarna(this.id)">'+
                 "<a class='btn btn-danger hapus' id='hapus_warna_"+jumlah_warna_baru+"' onclick='hapus_warna(this.id)'>hapus</a>"+
-                "<div class='error-message col-3' id='error_inputWarnaBahan_"+jumlah_warna_baru+"'">"+
+                "<div class='error-message col-3' id='error_inputWarnaBahan_"+jumlah_warna_baru+"'>"+
                 "</div>"+
                 "</div>"
         $('#warna').append(opsi)
